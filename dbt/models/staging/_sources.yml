@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: raw
+    description: >
+      Raw chain + product data landed as parquet. Schemas mirror Dune's raw tables
+      (ethereum.transactions / ethereum.logs / prices.day) so the same models can be pointed
+      at a Dune / BigQuery export with only the source definition changed.
+    meta:
+      external_location: "{{ env_var('RAW_DIR', '../data/raw') }}/{name}.parquet"
+    tables:
+      - name: raw_transactions
+      - name: raw_logs
+      - name: raw_prices_daily
+      - name: raw_tokens
+      - name: raw_pools
+      - name: raw_labels
+      - name: raw_app_sessions
+      - name: raw_app_events
+      - name: raw_marketing_spend

@@ -1,0 +1,10 @@
+data/raw/
+data/*.duckdb
+data/*.duckdb.wal
+data/ground_truth.json
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+logs/
+__pycache__/
+.pytest_cache/

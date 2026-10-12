@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DemoSwap 协议看板</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface-1: #fcfcfb; --surface-2: #f3f2ee;
+  --text-primary: #0b0b0b; --text-secondary: #52514e; --text-muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+  --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a;
+  --good-text: #006300; --critical: #d03b3b;
+  --seq-0: #cde2fb; --seq-1: #9ec5f4; --seq-2: #6da7ec; --seq-3: #3987e5; --seq-4: #256abf; --seq-5: #184f95; --seq-6: #0d366b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface-1: #1a1a19; --surface-2: #232321;
+    --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
+    --good-text: #0ca30c; --critical: #e66767;
+    --seq-0: #0d366b; --seq-1: #104281; --seq-2: #184f95; --seq-3: #1c5cab; --seq-4: #256abf; --seq-5: #3987e5; --seq-6: #6da7ec;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface-1: #1a1a19; --surface-2: #232321;
+  --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
+  --good-text: #0ca30c; --critical: #e66767;
+  --seq-0: #0d366b; --seq-1: #104281; --seq-2: #184f95; --seq-3: #1c5cab; --seq-4: #256abf; --seq-5: #3987e5; --seq-6: #6da7ec;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--text-primary);
+  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 24px 16px 64px; }
+header h1 { font-size: 22px; margin: 0 0 4px; font-weight: 650; }
+header p { margin: 0; color: var(--text-secondary); }
+.note { margin-top: 10px; font-size: 12px; color: var(--text-muted); }
+h2 { font-size: 16px; font-weight: 650; margin: 36px 0 12px; }
+.card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.grid { display: grid; gap: 12px; }
+.grid > * { min-width: 0; }
+.kpis { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top: 20px; }
+.kpi .label { color: var(--text-secondary); font-size: 12px; }
+.kpi .value { font-size: 24px; font-weight: 650; margin-top: 2px; }
+.kpi .delta { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+.two { grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }
+@media (max-width: 520px) { .two { grid-template-columns: 1fr; } }
+.chart-title { font-weight: 600; margin: 0 0 2px; }
+.chart-sub { color: var(--text-secondary); font-size: 12px; margin: 0 0 8px; }
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; overflow: visible; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.tip { position: absolute; pointer-events: none; background: var(--surface-1); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 10px; font-size: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.12); white-space: nowrap; display: none; z-index: 5; }
+.tip b { font-weight: 600; } .tip .row { display: flex; gap: 8px; align-items: center; justify-content: space-between; }
+.tip .sw { width: 8px; height: 8px; border-radius: 2px; display: inline-block; margin-right: 6px; }
+.insight { display: grid; grid-template-columns: 44px 1fr; gap: 10px; }
+.badge { font-size: 11px; font-weight: 650; border: 1px solid var(--border); border-radius: 6px; padding: 2px 6px; height: fit-content; text-align: center; color: var(--text-secondary); }
+.insight h3 { font-size: 14px; margin: 0 0 6px; font-weight: 600; }
+.insight dl { margin: 0; display: grid; grid-template-columns: 56px 1fr; gap: 3px 8px; font-size: 13px; }
+.insight dt { color: var(--text-muted); } .insight dd { margin: 0; color: var(--text-secondary); }
+.area { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th, td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--text-secondary); font-weight: 600; }
+td { font-variant-numeric: tabular-nums; }
+.scroll { overflow-x: auto; }
+details { margin-top: 8px; font-size: 12px; } summary { color: var(--text-secondary); cursor: pointer; }
+.heat td { text-align: center; padding: 4px 2px; min-width: 32px; border-bottom: 2px solid var(--surface-1); border-right: 2px solid var(--surface-1); }
+.heat td.lbl { text-align: left; color: var(--text-secondary); background: none; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 12px; }
+.ok { color: var(--good-text); } .bad { color: var(--critical); }
+.themebtn { float: right; background: var(--surface-1); color: var(--text-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 4px 10px; cursor: pointer; font: inherit; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <button class="themebtn" id="themebtn" type="button">切换深色 / 浅色</button>
+    <h1>DemoSwap 协议健康度看板</h1>
+    <p id="asof"></p>
+    <p class="note">数据为模拟的 Ethereum 原始交易与日志(结构同 Dune <span class="mono">ethereum.logs</span>),经 dbt 解码建模。口径说明:「清洗后」指已剔除 MEV 机器人、协议地址、女巫簇和刷量钱包。</p>
+  </header>
+
+  <div class="grid kpis" id="kpis"></div>
+
+  <h2>关键发现与建议</h2>
+  <div class="grid" id="insights"></div>
+
+  <h2>DeFi 指标</h2>
+  <div class="grid two">
+    <div class="card">
+      <p class="chart-title">TVL(美元)</p>
+      <p class="chart-sub">由每个池子当天最后一次 Sync 事件的储备量 × 当日价格计算;圆点为异常检测报警日</p>
+      <div class="chart" id="c-tvl"></div>
+    </div>
+    <div class="card">
+      <p class="chart-title">每日交易量构成(美元)</p>
+      <p class="chart-sub">按钱包类型拆分;9 月初的峰值几乎全部来自刷量</p>
+      <div class="chart" id="c-vol"></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:12px">
+    <p class="chart-title">LP 经济性:手续费收益 vs 无常损失(观察期累计)</p>
+    <div class="scroll"><table id="t-lp"></table></div>
+  </div>
+
+  <h2>用户与增长</h2>
+  <div class="grid two">
+    <div class="card">
+      <p class="chart-title">日活跃交易者:报告口径 vs 清洗后</p>
+      <p class="chart-sub">两条线之间的差就是女巫 / 刷量 / 机器人带来的「虚假活跃」</p>
+      <div class="chart" id="c-dau"></div>
+    </div>
+    <div class="card">
+      <p class="chart-title">周同期群留存(清洗后用户)</p>
+      <p class="chart-sub">行 = 首笔交易所在周;列 = 之后第 N 周仍有交易的比例</p>
+      <div class="scroll"><table class="heat" id="t-cohort"></table></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:12px">
+    <p class="chart-title">获客渠道效率</p>
+    <p class="chart-sub">CAC = 投放花费 / 新增交易者;LTV = 首单后 30 天内产生的 LP 手续费;D30 = 30 天内有回访交易</p>
+    <div class="scroll"><table id="t-ch"></table></div>
+  </div>
+
+  <h2>转化漏斗与 A/B 实验</h2>
+  <div class="grid two">
+    <div class="card">
+      <p class="chart-title">全站转化漏斗(链下事件 → 链上确认)</p>
+      <p class="chart-sub">「确认」= 前端 swap_submitted 事件的 tx_hash 在链上执行成功</p>
+      <div class="chart" id="c-funnel"></div>
+    </div>
+    <div class="card">
+      <p class="chart-title">实验:新版 Swap 界面(B)vs 旧版(A)</p>
+      <p class="chart-sub">指标:报价用户中提交交易的比例;随机化单位 = 用户(anonymous_id)</p>
+      <div class="stat-row" id="ab-stats"></div>
+      <div class="chart" id="c-ab"></div>
+    </div>
+  </div>
+
+  <h2>代币经济与空投</h2>
+  <div class="grid two">
+    <div class="card">
+      <p class="chart-title">空投效果:女巫 vs 真实用户</p>
+      <div class="scroll"><table id="t-air"></table></div>
+    </div>
+    <div class="card">
+      <p class="chart-title">DEMO 持币集中度(剔除池子 / CEX / 未分发合约)</p>
+      <div class="stat-row" id="tok-stats"></div>
+      <div class="scroll"><table id="t-bal"></table></div>
+    </div>
+  </div>
+
+  <h2>异常与数据质量</h2>
+  <div class="card">
+    <p class="chart-title">异常检测报警(滚动 28 天稳健 z 分数,|z| &gt; 4)</p>
+    <div class="scroll"><table id="t-anom"></table></div>
+  </div>
+  <div class="grid two" style="margin-top:12px">
+    <div class="card">
+      <p class="chart-title">女巫资金簇(同一地址批量注资)</p>
+      <div class="scroll"><table id="t-syb"></table></div>
+    </div>
+    <div class="card">
+      <p class="chart-title">用户分层(清洗后,按累计交易额)</p>
+      <div class="scroll"><table id="t-seg"></table></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:12px" id="val-card">
+    <p class="chart-title">模型验证(对照模拟数据的隐藏真值)</p>
+    <div class="scroll"><table id="t-val"></table></div>
+  </div>
+</div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+const D = JSON.parse(document.getElementById('data').textContent);
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const $ = id => document.getElementById(id);
+const fmtUsd = v => v == null ? '–' : Math.abs(v) >= 1e9 ? '$' + (v/1e9).toFixed(2) + 'B' : Math.abs(v) >= 1e6 ? '$' + (v/1e6).toFixed(2) + 'M' : Math.abs(v) >= 1e3 ? '$' + (v/1e3).toFixed(1) + 'k' : '$' + v.toFixed(v < 10 ? 2 : 0);
+const fmtPct = (v, d = 1) => v == null ? '–' : (v * 100).toFixed(d) + '%';
+const fmtInt = v => v == null ? '–' : Math.round(v).toLocaleString('en-US');
+const signed = (v, f) => v == null ? '–' : (v > 0 ? '+' : '') + f(v);
+const short = a => a ? a.slice(0, 6) + '…' + a.slice(-4) : '–';
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+
+function niceTicks(max, n = 4) {
+  const raw = max / n, mag = Math.pow(10, Math.floor(Math.log10(raw))), step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= raw);
+  const ticks = []; for (let v = 0; v <= max + 1e-9; v += step) ticks.push(v); if (ticks[ticks.length - 1] < max) ticks.push(ticks[ticks.length - 1] + step); return ticks;
+}
+function tableView(container, headers, rows) {
+  const d = document.createElement('details'); d.innerHTML = '<summary>查看数据表</summary>';
+  const wrap = document.createElement('div'); wrap.className = 'scroll';
+  wrap.innerHTML = '<table><thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>' +
+    rows.map(r => '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>').join('') + '</tbody></table>';
+  d.appendChild(wrap); container.appendChild(d);
+}
+
+/* Time-series chart: lines or stacked bars, one y-axis, crosshair + tooltip. */
+function timeChart(host, { x, series, type = 'line', yFmt = fmtUsd, height = 240, markers = [] }) {
+  host.innerHTML = '';
+  if (series.length > 1) {
+    const lg = document.createElement('div'); lg.className = 'legend';
+    lg.innerHTML = series.map(s => `<span><i style="background:${css(s.color)}"></i>${s.name}</span>`).join('');
+    host.appendChild(lg);
+  }
+  const W = host.clientWidth || 600, H = height, m = { l: 52, r: series.length > 1 && type === 'line' ? 64 : 12, t: 8, b: 24 };
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, height: H, role: 'img' }, host);
+  const n = x.length, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const totals = x.map((_, i) => type === 'stack' ? series.reduce((a, s) => a + s.values[i], 0) : Math.max(...series.map(s => s.values[i])));
+  const ticks = niceTicks(Math.max(...totals)), ymax = ticks[ticks.length - 1];
+  const X = i => m.l + (n === 1 ? iw / 2 : (type === 'stack' ? (i + 0.5) * iw / n : i * iw / (n - 1)));
+  const Y = v => m.t + ih - v / ymax * ih;
+  ticks.forEach(t => { el('line', { x1: m.l, x2: W - m.r, y1: Y(t), y2: Y(t), stroke: css(t === 0 ? '--axis' : '--grid'), 'stroke-width': 1 }, svg);
+    const tx = el('text', { x: m.l - 6, y: Y(t) + 4, 'text-anchor': 'end', 'font-size': 11, fill: css('--text-muted') }, svg); tx.textContent = yFmt(t); });
+  const months = []; x.forEach((d, i) => { if (d.endsWith('-01')) months.push(i); });
+  months.forEach(i => { const tx = el('text', { x: X(i), y: H - 6, 'text-anchor': 'middle', 'font-size': 11, fill: css('--text-muted') }, svg); tx.textContent = x[i].slice(0, 7); });
+  if (type === 'stack') {
+    const bw = Math.max(1, iw / n - (iw / n > 4 ? 1 : 0));
+    x.forEach((_, i) => { let acc = 0; series.forEach((s, si) => { const v = s.values[i]; if (v <= 0) return;
+      const y0 = Y(acc), y1 = Y(acc + v); acc += v;
+      el('rect', { x: X(i) - bw / 2, y: y1, width: bw, height: Math.max(0, y0 - y1 - (si < series.length - 1 ? 0.5 : 0)), fill: css(s.color) }, svg); }); });
+  } else {
+    series.forEach(s => el('path', { d: s.values.map((v, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(v).toFixed(1)).join(''), fill: 'none', stroke: css(s.color), 'stroke-width': 2, 'stroke-linejoin': 'round' }, svg));
+    if (series.length > 1) {  // direct end labels, pushed apart so they never overlap
+      const labs = series.map(s => ({ name: s.name, y: Y(s.values[n - 1]) + 4 })).sort((a, b) => a.y - b.y);
+      for (let i = 1; i < labs.length; i++) if (labs[i].y - labs[i - 1].y < 13) labs[i].y = labs[i - 1].y + 13;
+      labs.forEach(l => { const lt = el('text', { x: X(n - 1) + 6, y: l.y, 'font-size': 11, fill: css('--text-secondary') }, svg); lt.textContent = l.name; });
+    }
+  }
+  markers.forEach(mk => { const i = x.indexOf(mk.day); if (i < 0) return; const v = series[0].values[i];
+    el('circle', { cx: X(i), cy: Y(v), r: 5, fill: css('--critical'), stroke: css('--surface-1'), 'stroke-width': 2 }, svg);
+    if (mk.label) { const t = el('text', { x: X(i) - 8, y: Y(v) + 18, 'text-anchor': 'end', 'font-size': 11, fill: css('--text-secondary') }, svg); t.textContent = mk.label; } });
+  const cross = el('line', { y1: m.t, y2: m.t + ih, stroke: css('--axis'), 'stroke-width': 1, visibility: 'hidden' }, svg);
+  const tip = document.createElement('div'); tip.className = 'tip'; host.appendChild(tip);
+  const hit = el('rect', { x: m.l, y: m.t, width: iw, height: ih, fill: 'transparent' }, svg);
+  const move = ev => {
+    const r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) * W / r.width;
+    const i = Math.max(0, Math.min(n - 1, Math.round(type === 'stack' ? (px - m.l) / (iw / n) - 0.5 : (px - m.l) / (iw / (n - 1)))));
+    cross.setAttribute('x1', X(i)); cross.setAttribute('x2', X(i)); cross.setAttribute('visibility', 'visible');
+    tip.innerHTML = `<b>${x[i]}</b>` + series.map(s => `<div class="row"><span><span class="sw" style="background:${css(s.color)}"></span>${s.name}</span><span>${yFmt(s.values[i])}</span></div>`).join('') +
+      (type === 'stack' ? `<div class="row"><span>合计</span><b>${yFmt(totals[i])}</b></div>` : '');
+    tip.style.display = 'block';
+    const hostR = host.getBoundingClientRect(), left = ev.clientX - hostR.left;
+    tip.style.left = Math.min(left + 12, host.clientWidth - tip.offsetWidth - 4) + 'px'; tip.style.top = (ev.clientY - hostR.top - tip.offsetHeight - 10) + 'px';
+  };
+  hit.addEventListener('mousemove', move); hit.addEventListener('mouseleave', () => { tip.style.display = 'none'; cross.setAttribute('visibility', 'hidden'); });
+}
+
+/* Horizontal bars (single series or grouped), hover tooltip per bar. */
+function hbars(host, { labels, series, fmt = fmtInt, height }) {
+  host.innerHTML = '';
+  if (series.length > 1) { const lg = document.createElement('div'); lg.className = 'legend';
+    lg.innerHTML = series.map(s => `<span><i style="background:${css(s.color)}"></i>${s.name}</span>`).join(''); host.appendChild(lg); }
+  const W = host.clientWidth || 500, rowH = series.length > 1 ? 34 : 26, m = { l: 92, r: 64, t: 4, b: 4 };
+  const H = height || m.t + m.b + labels.length * rowH, svg = el('svg', { viewBox: `0 0 ${W} ${H}`, height: H }, host);
+  const max = Math.max(...series.flatMap(s => s.values)), iw = W - m.l - m.r, bh = (rowH - 8) / series.length - 2;
+  const tip = document.createElement('div'); tip.className = 'tip'; host.appendChild(tip);
+  labels.forEach((lab, i) => {
+    const y = m.t + i * rowH; const t = el('text', { x: m.l - 8, y: y + rowH / 2 + 4, 'text-anchor': 'end', 'font-size': 12, fill: css('--text-secondary') }, svg); t.textContent = lab;
+    series.forEach((s, si) => {
+      const v = s.values[i], w = Math.max(2, v / max * iw), by = y + 4 + si * (bh + 2);
+      const r = el('rect', { x: m.l, y: by, width: w, height: bh, rx: 3, fill: css(s.color) }, svg);
+      const vt = el('text', { x: m.l + w + 6, y: by + bh / 2 + 4, 'font-size': 11, fill: css('--text-secondary') }, svg); vt.textContent = s.label ? s.label(i) : fmt(v);
+      const hb = el('rect', { x: m.l, y: by - 1, width: iw, height: bh + 2, fill: 'transparent' }, svg);
+      hb.addEventListener('mousemove', ev => { tip.innerHTML = `<b>${lab}</b><div class="row"><span><span class="sw" style="background:${css(s.color)}"></span>${s.name}</span><span>${s.label ? s.label(i) : fmt(v)}</span></div>`;
+        tip.style.display = 'block'; const hr = host.getBoundingClientRect(); tip.style.left = Math.min(ev.clientX - hr.left + 12, host.clientWidth - tip.offsetWidth - 4) + 'px'; tip.style.top = (ev.clientY - hr.top - tip.offsetHeight - 8) + 'px'; });
+      hb.addEventListener('mouseleave', () => tip.style.display = 'none');
+    });
+  });
+}
+
+function table(id, headers, rows) {
+  $(id).innerHTML = '<thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>' + rows.map(r => '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>').join('') + '</tbody>';
+}
+
+function render() {
+  const S = D.series, K = D.kpis;
+  $('asof').textContent = `数据截至 ${D.as_of} · 观察窗口 ${D.window[0]} → ${D.window[1]} · KPI 对比:近 30 天 vs 前 30 天`;
+  const kp = [
+    ['TVL', fmtUsd(K.tvl_usd.value), K.tvl_usd.change],
+    ['30 日交易量(清洗后)', fmtUsd(K.clean_volume_usd.value), K.clean_volume_usd.change],
+    ['30 日 LP 手续费', fmtUsd(K.fees_usd.value), K.fees_usd.change],
+    ['日均真实活跃交易者', fmtInt(K.avg_clean_dau.value), K.avg_clean_dau.change],
+    ['30 日新增真实用户', fmtInt(K.clean_new_traders.value), K.clean_new_traders.change],
+    ['Fee APR(30 日)', fmtPct(K.fee_apr_30d.value, 2), null],
+  ];
+  $('kpis').innerHTML = kp.map(([l, v, c]) => `<div class="card kpi"><div class="label">${l}</div><div class="value">${v}</div><div class="delta">${c == null ? '按近 30 天年化' : (c >= 0 ? '▲ ' : '▼ ') + fmtPct(Math.abs(c)) + ' 环比'}</div></div>`).join('');
+  $('insights').innerHTML = D.insights.map(s => `<div class="card insight"><div class="badge">${s.priority}</div><div><div class="area">${s.area}</div><h3>${s.finding}</h3><dl>
+    <dt>证据</dt><dd>${s.evidence}</dd><dt>假设</dt><dd>${s.hypothesis}</dd><dt>建议</dt><dd>${s.action}</dd><dt>影响</dt><dd>${s.impact}</dd></dl></div></div>`).join('');
+
+  const tvlAnoms = D.anomalies.flagged.filter(a => a.metric === 'tvl_usd').map(a => ({ day: a.day, label: a.direction === 'drop' ? '做市商撤出' : '' }));
+  timeChart($('c-tvl'), { x: S.day, series: [{ name: 'TVL', values: S.tvl_usd, color: '--series-1' }], markers: tvlAnoms });
+  tableView($('c-tvl'), ['日期', 'TVL', 'Fee APR'], S.day.map((d, i) => [d, fmtUsd(S.tvl_usd[i]), fmtPct(S.fee_apr[i], 2)]));
+  const volSeries = [{ name: '真实用户', values: S.volume_clean, color: '--series-1' }, { name: '女巫与刷量', values: S.volume_suspicious, color: '--series-2' }, { name: '机器人与合约', values: S.volume_bots, color: '--series-3' }];
+  timeChart($('c-vol'), { x: S.day, series: volSeries, type: 'stack' });
+  tableView($('c-vol'), ['日期', '真实用户', '女巫与刷量', '机器人与合约'], S.day.map((d, i) => [d, fmtUsd(S.volume_clean[i]), fmtUsd(S.volume_suspicious[i]), fmtUsd(S.volume_bots[i])]));
+  timeChart($('c-dau'), { x: S.day, series: [{ name: '报告口径', values: S.dau_reported, color: '--series-2' }, { name: '清洗后', values: S.dau_clean, color: '--series-1' }], yFmt: fmtInt });
+  tableView($('c-dau'), ['日期', '报告口径', '清洗后'], S.day.map((d, i) => [d, fmtInt(S.dau_reported[i]), fmtInt(S.dau_clean[i])]));
+
+  table('t-lp', ['池子', '平均 TVL', '日均成交/TVL', '手续费收益', '无常损失', 'LP 相对持币', '盈亏平衡日成交', '实际日均成交'],
+    D.defi.pools.map(p => [p.pool, fmtUsd(p.avg_tvl_usd), fmtPct(p.volume_tvl_ratio, 2), fmtPct(p.fee_yield, 2), fmtPct(p.impermanent_loss, 2),
+      `<span class="${p.net_vs_hodl < 0 ? 'bad' : 'ok'}">${p.net_vs_hodl < 0 ? '▼' : '▲'} ${signed(p.net_vs_hodl, v => fmtPct(v, 2))}</span>`, fmtUsd(p.breakeven_daily_volume), fmtUsd(p.actual_avg_daily_volume)]));
+
+  const seq = ['--seq-0', '--seq-1', '--seq-2', '--seq-3', '--seq-4', '--seq-5', '--seq-6'];
+  const weeks = [...Array(13).keys()];
+  $('t-cohort').innerHTML = '<thead><tr><th>首周</th><th>人数</th>' + weeks.slice(1).map(w => `<th>W${w}</th>`).join('') + '</tr></thead><tbody>' +
+    D.retention.matrix.map(r => `<tr><td class="lbl">${r.cohort_week.slice(5)}</td><td class="lbl">${fmtInt(r.cohort_size)}</td>` + weeks.slice(1).map(w => {
+      const v = r['w' + w]; if (v == null) return '<td></td>';
+      const k = Math.min(6, Math.floor(v / 0.5 * 7)); const dark = k >= 4;
+      return `<td title="W${w}: ${fmtPct(v)}" style="background:${css(seq[k])};color:${dark ? '#fff' : css('--text-primary')}">${Math.round(v * 100)}</td>`; }).join('') + '</tr>').join('') + '</tbody>';
+
+  table('t-ch', ['渠道', '新增交易者', '花费', 'CAC', 'D30 留存', '30 日 LTV', 'LTV / CAC'],
+    D.channels.map(c => [c.channel, fmtInt(c.new_traders), fmtUsd(c.spend_usd), c.cac_usd ? fmtUsd(c.cac_usd) : '—', fmtPct(c.d30_retention), fmtUsd(c.ltv_30d_fees_usd), c.ltv_cac == null ? '—(自然流量)' : c.ltv_cac.toFixed(2) + '×']));
+
+  const F = D.funnel.overall, steps = ['sessions', 'connected', 'quoted', 'submitted', 'confirmed'], names = ['访问', '连接钱包', '请求报价', '提交交易', '链上确认'];
+  hbars($('c-funnel'), { labels: names, series: [{ name: '会话数', values: steps.map(s => F[s]), color: '--series-1', label: i => fmtInt(F[steps[i]]) + (i ? ` · ${fmtPct(F[steps[i]] / F[steps[i - 1]])}` : '') }] });
+  const U = D.experiment.user_level;
+  $('ab-stats').innerHTML = [
+    ['A 转化率', fmtPct(U.rate_a), `${fmtInt(U.n_a)} 名用户`], ['B 转化率', fmtPct(U.rate_b), `${fmtInt(U.n_b)} 名用户`],
+    ['提升(绝对值)', signed(U.abs_lift, v => fmtPct(v)), `95% CI [${fmtPct(U.ci_low)}, ${fmtPct(U.ci_high)}]`], ['显著性', 'p = ' + U.p_value.toExponential(1), `SRM p = ${D.experiment.srm.p_value.toFixed(2)}`],
+  ].map(([l, v, s]) => `<div class="kpi"><div class="label">${l}</div><div class="value" style="font-size:20px">${v}</div><div class="delta">${s}</div></div>`).join('');
+  const SL = D.experiment.session_level;
+  hbars($('c-ab'), { labels: ['用户级', '会话级'], series: [{ name: 'A(旧版)', values: [U.rate_a, SL.rate_a], color: '--series-2', label: i => fmtPct([U.rate_a, SL.rate_a][i]) }, { name: 'B(新版)', values: [U.rate_b, SL.rate_b], color: '--series-1', label: i => fmtPct([U.rate_b, SL.rate_b][i]) }] });
+
+  table('t-air', ['类型', '领取地址', '领取占比', '领取中位耗时', '24h 抛售率', '7 天抛售率', '7 天抛售额'],
+    D.tokenomics.airdrop.map(a => [a.recipient_type === 'sybil' ? '女巫' : '真实用户', fmtInt(a.recipients), fmtPct(a.share_of_airdrop), (a.median_minutes_to_claim / 60).toFixed(1) + ' 小时', fmtPct(a.sell_through_24h), fmtPct(a.sell_through_7d), fmtUsd(a.sold_7d_usd)]));
+  const C = D.tokenomics.concentration;
+  $('tok-stats').innerHTML = [['持币地址', fmtInt(C.holders)], ['Top10 占比', fmtPct(C.top10_share)], ['Gini', C.gini.toFixed(3)], ['Nakamoto 系数', C.nakamoto]]
+    .map(([l, v]) => `<div class="kpi"><div class="label">${l}</div><div class="value" style="font-size:20px">${v}</div></div>`).join('');
+  table('t-bal', ['持有者类型', '占总供应'], D.tokenomics.balances_by_type.map(b => [b.holder_type, fmtPct(b.share)]));
+
+  const attr = Object.fromEntries(D.anomalies.volume_attribution.map(a => [a.day, a]));
+  const explain = a => { if (a.metric === 'volume_usd' && attr[a.day]) { const t = attr[a.day]; return `Top3 地址贡献 ${fmtPct(t.top_share, 0)}(${t.top_flags.join(' / ')}),主要在 ${t.top_pool}`; }
+    return { tvl_usd: 'TVL 环比变化', net_liquidity_flow_usd: '净流动性流入/流出', new_traders: '新增交易者', active_traders: '报告口径 DAU', clean_active_traders: '清洗后 DAU', demo_net_sell_usd: '用户 DEMO 净卖出', clean_volume_usd: '清洗后交易量' }[a.metric] || a.metric; };
+  table('t-anom', ['日期', '指标', '观测值', 'z 分数', '方向', '归因 / 说明'],
+    D.anomalies.flagged.map(a => [a.day, a.metric, a.transform === 'pct_change' ? fmtPct(a.observed) : (a.metric.includes('usd') ? fmtUsd(a.value) : fmtInt(a.value)), a.zscore.toFixed(1), a.direction === 'spike' ? '▲ 激增' : '▼ 骤降', explain(a)]));
+  table('t-syb', ['注资地址', '钱包数', '注资时间窗', '无前端占比', '单笔中位', '规则命中', '判定'],
+    D.data_quality.clusters.map(c => [`<span class="mono">${short(c.funder)}</span>`, fmtInt(c.n_wallets), c.funding_window_h.toFixed(1) + ' 小时', fmtPct(c.headless_share, 0), fmtUsd(c.median_swap_usd), c.rules_hit + '/5', c.is_sybil_cluster ? '<b>女巫簇</b>' : '刷量 / 其他']));
+  table('t-seg', ['分层', '钱包数', '钱包占比', '交易额占比', '活跃天数中位'],
+    D.segments.tiers.map(s => [s.tier, fmtInt(s.wallets), fmtPct(s.wallet_share), fmtPct(s.volume_share), s.median_active_days]));
+  if (D.validation) {
+    const V = D.validation;
+    table('t-val', ['检测项', '结果'], [
+      ['女巫钱包', `precision ${fmtPct(V.sybil.precision)} · recall ${fmtPct(V.sybil.recall)}(TP ${V.sybil.tp} / FP ${V.sybil.fp} / FN ${V.sybil.fn})`],
+      ['刷量钱包', `precision ${fmtPct(V.wash.precision)} · recall ${fmtPct(V.wash.recall)}`],
+      ...V.anomalies.map(a => [`异常:${a.type}(${a.date})`, a.detected ? '<span class="ok">✓ 检出</span>' : '<span class="bad">✗ 未检出</span>']),
+      ['实验效果(绝对提升)', `真实:单次报价提交率 ${fmtPct(V.experiment_truth.control)} → ${fmtPct(V.experiment_truth.treatment)}(+${fmtPct(V.experiment_truth.treatment - V.experiment_truth.control)});会话级估计 ${signed(SL.abs_lift, v => fmtPct(v))},CI [${fmtPct(SL.ci_low)}, ${fmtPct(SL.ci_high)}]`],
+    ]);
+  } else { $('val-card').style.display = 'none'; }
+}
+render();
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(render, 150); });
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
+$('themebtn').addEventListener('click', () => { const r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; r.dataset.theme = dark ? 'light' : 'dark'; render(); });
+</script>
+</body>
+</html>

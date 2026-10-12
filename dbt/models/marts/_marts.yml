@@ -1,0 +1,38 @@
+version: 2
+models:
+  - name: dim_wallets
+    description: One row per wallet with behaviour, wallet type, acquisition channel and funder.
+    columns:
+      - name: wallet
+        tests: [unique, not_null]
+      - name: wallet_type
+        tests:
+          - accepted_values: {arguments: {values: [user, mev_bot, protocol, contract_caller, lp_only]}}
+  - name: fct_swaps
+    columns:
+      - name: wallet_type
+        tests: [not_null]
+  - name: fct_protocol_daily
+    description: North-star daily DeFi + user metrics.
+    columns:
+      - name: day
+        tests: [unique, not_null]
+      - name: tvl_usd
+        tests: [not_null]
+  - name: fct_pool_daily
+    tests:
+      - dbt_utils_unique_combination: {arguments: {columns: [pool_address, day]}}
+  - name: fct_experiment_users
+    columns:
+      - name: anonymous_id
+        tests: [unique]
+      - name: variant
+        tests:
+          - accepted_values: {arguments: {values: [A, B]}}
+      - name: n_variants_seen
+        tests:
+          - accepted_values: {arguments: {values: [1]}, config: {quote: false}}
+  - name: fct_token_balances
+    columns:
+      - name: holder
+        tests: [unique]

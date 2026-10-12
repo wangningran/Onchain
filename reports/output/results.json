@@ -1,0 +1,3342 @@
+{
+  "as_of": "2026-09-30",
+  "window": [
+    "2026-05-01",
+    "2026-09-30"
+  ],
+  "data_quality": {
+    "sybil_clusters": 8,
+    "sybil_wallets": 799,
+    "wash_wallets": 2,
+    "wash_volume_usd": 4480149.362026375,
+    "sybil_volume_usd": 332613.1178166201,
+    "bot_volume_share": 0.40613598289879305,
+    "reported_users": 19156,
+    "clean_users": 18355,
+    "july_new_wallets": 6032,
+    "july_new_sybil_share": 0.13246021220159152,
+    "peak_reported_dau": 1260,
+    "peak_reported_dau_day": "2026-08-01",
+    "peak_clean_dau_that_day": 461,
+    "clusters": [
+      {
+        "funder": "0xe49edc9dfc9150b1b43ee10b75a0a08b116a953c",
+        "n_wallets": 126,
+        "funding_window_h": 1.9441666666666666,
+        "headless_share": 1.0,
+        "median_swap_usd": 30.143705170638658,
+        "median_span_days": 22.0,
+        "rules_hit": 5,
+        "is_sybil_cluster": true
+      },
+      {
+        "funder": "0x2f5bbe0bf6deeb0a202af9f124cf83179fa2c881",
+        "n_wallets": 121,
+        "funding_window_h": 1.978611111111111,
+        "headless_share": 1.0,
+        "median_swap_usd": 29.046218555100886,
+        "median_span_days": 22.0,
+        "rules_hit": 5,
+        "is_sybil_cluster": true
+      },
+      {
+        "funder": "0x95951f1c1cb180bcfdd332dc49f74ba8845f69d4",
+        "n_wallets": 119,
+        "funding_window_h": 1.978888888888889,
+        "headless_share": 1.0,
+        "median_swap_usd": 29.40534574158608,
+        "median_span_days": 20.0,
+        "rules_hit": 5,
+        "is_sybil_cluster": true
+      },
+      {
+        "funder": "0x4fd9f98b237602b7d08ef9b7de76e73dd9e0fcef",
+        "n_wallets": 105,
+        "funding_window_h": 1.9830555555555556,
+        "headless_share": 1.0,
+        "median_swap_usd": 29.50425796391119,
+        "median_span_days": 21.0,
+        "rules_hit": 5,
+        "is_sybil_cluster": true
+      },
+      {
+        "funder": "0xa7c975c43095eb2b4f83b4860832f7681a1a5f64",
+        "n_wallets": 88,
+        "funding_window_h": 1.9255555555555555,
+        "headless_share": 1.0,
+        "median_swap_usd": 30.793684690997008,
+        "median_span_days": 25.5,
+        "rules_hit": 5,
+        "is_sybil_cluster": true
+      },
+      {
+        "funder": "0xb84ff57f09e90161d6e6dd0c2c17d52a5b381b81",
+        "n_wallets": 85,
+        "funding_window_h": 1.9197222222222223,
+        "headless_share": 1.0,
+        "median_swap_usd": 29.63355467218753,
+        "median_span_days": 24.0,
+        "rules_hit": 5,
+        "is_sybil_cluster": true
+      },
+      {
+        "funder": "0x57dc732f5636c2e581f7b2d3f6608b1fe4d48bfc",
+        "n_wallets": 84,
+        "funding_window_h": 1.9308333333333334,
+        "headless_share": 1.0,
+        "median_swap_usd": 30.641687519456852,
+        "median_span_days": 20.0,
+        "rules_hit": 5,
+        "is_sybil_cluster": true
+      },
+      {
+        "funder": "0x52598188fb5e019f03f9cf0c15013ee212956ff0",
+        "n_wallets": 71,
+        "funding_window_h": 1.9666666666666666,
+        "headless_share": 1.0,
+        "median_swap_usd": 29.835536612351213,
+        "median_span_days": 18.0,
+        "rules_hit": 5,
+        "is_sybil_cluster": true
+      },
+      {
+        "funder": "0x2620f1ff2b0482c4971d2f6bcc802215aa153f60",
+        "n_wallets": 2,
+        "funding_window_h": 0.0,
+        "headless_share": 1.0,
+        "median_swap_usd": 4956.22053424678,
+        "median_span_days": 2.0,
+        "rules_hit": 3,
+        "is_sybil_cluster": false
+      }
+    ],
+    "wash": [
+      {
+        "trader": "0xf0bbdc496e1ee61d3fb9ed1ff988174ad1ebc937",
+        "pool_name": "DEMO-WETH",
+        "n_swaps": 450,
+        "gross_usd": 2258948.967029891,
+        "net_usd": 7623.439393035195,
+        "net_ratio": 0.0033747727391374577,
+        "funder": "0x2620f1ff2b0482c4971d2f6bcc802215aa153f60"
+      },
+      {
+        "trader": "0x7ce0df8a2955b97710f827fe33f4ab4a9a5c2f3d",
+        "pool_name": "DEMO-WETH",
+        "n_swaps": 450,
+        "gross_usd": 2221200.3949964833,
+        "net_usd": 6869.262307513607,
+        "net_ratio": 0.0030925900801149833,
+        "funder": "0x2620f1ff2b0482c4971d2f6bcc802215aa153f60"
+      }
+    ]
+  },
+  "kpis": {
+    "volume_usd": {
+      "value": 33134511.766069915,
+      "prev": 29477705.849064104,
+      "change": 0.12405327387856785
+    },
+    "clean_volume_usd": {
+      "value": 17978630.16977967,
+      "prev": 17480844.290528934,
+      "change": 0.028476077641194586
+    },
+    "fees_usd": {
+      "value": 99403.53529820971,
+      "prev": 88433.11754719229,
+      "change": 0.12405327387856774
+    },
+    "avg_clean_dau": {
+      "value": 502.4,
+      "prev": 521.2666666666667,
+      "change": -0.03619388668627703
+    },
+    "avg_reported_dau": {
+      "value": 502.6,
+      "prev": 521.2666666666667,
+      "change": -0.035810205908683904
+    },
+    "clean_new_traders": {
+      "value": 4378.0,
+      "prev": 4006.0,
+      "change": 0.09286070893659511
+    },
+    "tvl_usd": {
+      "value": 35647674.022303015,
+      "prev": 44972678.86483149,
+      "change": -0.2073482184718288
+    },
+    "fee_apr_30d": {
+      "value": 0.03249328838095204
+    }
+  },
+  "anomalies": {
+    "flagged": [
+      {
+        "day": "2026-05-31",
+        "metric": "net_liquidity_flow_usd",
+        "transform": "level",
+        "value": 774784.3401356281,
+        "observed": 774784.3401356281,
+        "zscore": 5.852479867079917,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-05-31",
+        "metric": "tvl_usd",
+        "transform": "pct_change",
+        "value": 33209977.524266288,
+        "observed": 0.038176937588239035,
+        "zscore": 4.5166373990039315,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-06-10",
+        "metric": "clean_volume_usd",
+        "transform": "level",
+        "value": 1561570.3652211712,
+        "observed": 1561570.3652211712,
+        "zscore": 12.373481572496269,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-06-10",
+        "metric": "volume_usd",
+        "transform": "level",
+        "value": 2891747.061358116,
+        "observed": 2891747.061358116,
+        "zscore": 12.445637471958543,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-06-12",
+        "metric": "demo_net_sell_usd",
+        "transform": "level",
+        "value": -114491.44042332366,
+        "observed": -114491.44042332366,
+        "zscore": -4.184563748903909,
+        "direction": "drop"
+      },
+      {
+        "day": "2026-07-04",
+        "metric": "net_liquidity_flow_usd",
+        "transform": "level",
+        "value": 522588.5845643636,
+        "observed": 522588.5845643636,
+        "zscore": 4.298207551782395,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-04",
+        "metric": "new_traders",
+        "transform": "level",
+        "value": 192.0,
+        "observed": 192.0,
+        "zscore": 5.588637721377504,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-05",
+        "metric": "new_traders",
+        "transform": "level",
+        "value": 175.0,
+        "observed": 175.0,
+        "zscore": 4.53257790368272,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-06",
+        "metric": "new_traders",
+        "transform": "level",
+        "value": 215.0,
+        "observed": 215.0,
+        "zscore": 6.583029812491569,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-07",
+        "metric": "new_traders",
+        "transform": "level",
+        "value": 218.0,
+        "observed": 218.0,
+        "zscore": 6.355778310452532,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-07",
+        "metric": "volume_usd",
+        "transform": "level",
+        "value": 1865227.2387036558,
+        "observed": 1865227.2387036558,
+        "zscore": 4.554542176887752,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-08",
+        "metric": "new_traders",
+        "transform": "level",
+        "value": 259.0,
+        "observed": 259.0,
+        "zscore": 7.715227634714737,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-09",
+        "metric": "new_traders",
+        "transform": "level",
+        "value": 226.0,
+        "observed": 226.0,
+        "zscore": 6.15324903382157,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-09",
+        "metric": "volume_usd",
+        "transform": "level",
+        "value": 1607398.8921990397,
+        "observed": 1607398.8921990397,
+        "zscore": 4.005017039846066,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-10",
+        "metric": "net_liquidity_flow_usd",
+        "transform": "level",
+        "value": 973749.8267348306,
+        "observed": 973749.8267348306,
+        "zscore": 4.5105597690079415,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-10",
+        "metric": "new_traders",
+        "transform": "level",
+        "value": 204.0,
+        "observed": 204.0,
+        "zscore": 4.603667088491047,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-11",
+        "metric": "new_traders",
+        "transform": "level",
+        "value": 232.0,
+        "observed": 232.0,
+        "zscore": 5.316574221756691,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-12",
+        "metric": "new_traders",
+        "transform": "level",
+        "value": 232.0,
+        "observed": 232.0,
+        "zscore": 5.257060331214639,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-13",
+        "metric": "new_traders",
+        "transform": "level",
+        "value": 251.0,
+        "observed": 251.0,
+        "zscore": 5.395926075812762,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-07-22",
+        "metric": "demo_net_sell_usd",
+        "transform": "level",
+        "value": -183107.71608240902,
+        "observed": -183107.71608240902,
+        "zscore": -5.401216827380556,
+        "direction": "drop"
+      },
+      {
+        "day": "2026-08-01",
+        "metric": "demo_net_sell_usd",
+        "transform": "level",
+        "value": 189918.54263057146,
+        "observed": 189918.54263057146,
+        "zscore": 9.283972473642228,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-08-08",
+        "metric": "net_liquidity_flow_usd",
+        "transform": "level",
+        "value": 793022.571693836,
+        "observed": 793022.571693836,
+        "zscore": 4.961820615549265,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-08-19",
+        "metric": "demo_net_sell_usd",
+        "transform": "level",
+        "value": -176186.97424225442,
+        "observed": -176186.97424225442,
+        "zscore": -4.440788018957918,
+        "direction": "drop"
+      },
+      {
+        "day": "2026-08-22",
+        "metric": "volume_usd",
+        "transform": "level",
+        "value": 2022489.596985821,
+        "observed": 2022489.596985821,
+        "zscore": 4.6804870890533605,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-08-25",
+        "metric": "clean_volume_usd",
+        "transform": "level",
+        "value": 1296416.6108543023,
+        "observed": 1296416.6108543023,
+        "zscore": 5.535258273436528,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-08-25",
+        "metric": "volume_usd",
+        "transform": "level",
+        "value": 2211741.5215091403,
+        "observed": 2211741.5215091403,
+        "zscore": 5.663604826471097,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-09-05",
+        "metric": "volume_usd",
+        "transform": "level",
+        "value": 2463139.8802384078,
+        "observed": 2463139.8802384078,
+        "zscore": 5.044815626752918,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-09-06",
+        "metric": "volume_usd",
+        "transform": "level",
+        "value": 2812648.008690328,
+        "observed": 2812648.008690328,
+        "zscore": 5.887073564221121,
+        "direction": "spike"
+      },
+      {
+        "day": "2026-09-12",
+        "metric": "net_liquidity_flow_usd",
+        "transform": "level",
+        "value": -13234282.809598153,
+        "observed": -13234282.809598153,
+        "zscore": -80.89359832732275,
+        "direction": "drop"
+      },
+      {
+        "day": "2026-09-12",
+        "metric": "tvl_usd",
+        "transform": "pct_change",
+        "value": 31043273.17126013,
+        "observed": -0.3025802663002767,
+        "zscore": -32.71828036921322,
+        "direction": "drop"
+      },
+      {
+        "day": "2026-09-26",
+        "metric": "clean_volume_usd",
+        "transform": "level",
+        "value": 1055797.2576012907,
+        "observed": 1055797.2576012907,
+        "zscore": 4.8098147734172825,
+        "direction": "spike"
+      }
+    ],
+    "volume_attribution": [
+      {
+        "day": "2026-06-10",
+        "volume_usd": 2891747.0613581156,
+        "top_traders": [
+          "0xb3490c3f2ad0285d721f26d30dfdc5538ffb21c1",
+          "0xb8291532f83ed74875d195f8d28b690dd99788db",
+          "0xed746620f1820910fc6367eac14a954d383d912f"
+        ],
+        "top_share": 0.7230537041552763,
+        "top_pool": "WETH-USDC",
+        "top_flags": [
+          "mev_bot",
+          "user",
+          "mev_bot"
+        ]
+      },
+      {
+        "day": "2026-07-07",
+        "volume_usd": 1865227.2387036558,
+        "top_traders": [
+          "0xc0121e993d845b5df945feab027168b37723afbb",
+          "0x8dfec3617bccba4942e0d2995daa344e1b8f5682",
+          "0x3b56a8f8cff81870241ed94c13a23b9ad91d6ecb"
+        ],
+        "top_share": 0.6647884934394314,
+        "top_pool": "WETH-USDC",
+        "top_flags": [
+          "mev_bot",
+          "user",
+          "user"
+        ]
+      },
+      {
+        "day": "2026-07-09",
+        "volume_usd": 1607398.8921990413,
+        "top_traders": [
+          "0x434d3c41e86c4c028507a3c2200fdce33b855004",
+          "0x114bc523ac740b218b66006042266db1b7194bce",
+          "0x372f8bbf1b4667642c2c3a035f7d43272d4c832d"
+        ],
+        "top_share": 0.6793898560052998,
+        "top_pool": "WETH-USDC",
+        "top_flags": [
+          "mev_bot",
+          "user",
+          "user"
+        ]
+      },
+      {
+        "day": "2026-08-22",
+        "volume_usd": 2022489.5969858218,
+        "top_traders": [
+          "0x434d3c41e86c4c028507a3c2200fdce33b855004",
+          "0xed746620f1820910fc6367eac14a954d383d912f",
+          "0x566d7c36c2b1d8621b30911f0d3dcc6e276493bc"
+        ],
+        "top_share": 0.4721023234636827,
+        "top_pool": "WETH-USDC",
+        "top_flags": [
+          "mev_bot",
+          "mev_bot",
+          "user"
+        ]
+      },
+      {
+        "day": "2026-08-25",
+        "volume_usd": 2211741.5215091403,
+        "top_traders": [
+          "0xb3490c3f2ad0285d721f26d30dfdc5538ffb21c1",
+          "0x404bf0ccb2516c85d03dcae16f1aef9919c96c47",
+          "0xc0121e993d845b5df945feab027168b37723afbb"
+        ],
+        "top_share": 0.5788430135036589,
+        "top_pool": "WETH-USDC",
+        "top_flags": [
+          "mev_bot",
+          "user",
+          "mev_bot"
+        ]
+      },
+      {
+        "day": "2026-09-05",
+        "volume_usd": 2463139.8802384073,
+        "top_traders": [
+          "0xf0bbdc496e1ee61d3fb9ed1ff988174ad1ebc937",
+          "0x7ce0df8a2955b97710f827fe33f4ab4a9a5c2f3d",
+          "0xc0121e993d845b5df945feab027168b37723afbb"
+        ],
+        "top_share": 0.682528997357987,
+        "top_pool": "DEMO-WETH",
+        "top_flags": [
+          "wash",
+          "wash",
+          "mev_bot"
+        ]
+      },
+      {
+        "day": "2026-09-06",
+        "volume_usd": 2812648.0086903274,
+        "top_traders": [
+          "0x7ce0df8a2955b97710f827fe33f4ab4a9a5c2f3d",
+          "0xf0bbdc496e1ee61d3fb9ed1ff988174ad1ebc937",
+          "0xc0121e993d845b5df945feab027168b37723afbb"
+        ],
+        "top_share": 0.6034282848222631,
+        "top_pool": "DEMO-WETH",
+        "top_flags": [
+          "wash",
+          "wash",
+          "mev_bot"
+        ]
+      }
+    ],
+    "large_token_transfers": [
+      {
+        "block_time": "2026-09-01 01:00:00",
+        "from_address": "0x5fcbc5ec7fd452eb3edab60ddb8d73fbbba7de82",
+        "from_label": "team_vesting",
+        "to_address": "0xfc8126587c4f9ac0e5862849acd2a7cd1a589d6e",
+        "to_label": null,
+        "amount": 10000000.0,
+        "share_of_supply": 0.01
+      },
+      {
+        "block_time": "2026-09-01 01:00:00",
+        "from_address": "0x5fcbc5ec7fd452eb3edab60ddb8d73fbbba7de82",
+        "from_label": "team_vesting",
+        "to_address": "0x2d69d625fd4a5ad5332c6a3c553273844cc9cc00",
+        "to_label": null,
+        "amount": 10000000.0,
+        "share_of_supply": 0.01
+      },
+      {
+        "block_time": "2026-09-01 01:00:00",
+        "from_address": "0x5fcbc5ec7fd452eb3edab60ddb8d73fbbba7de82",
+        "from_label": "team_vesting",
+        "to_address": "0xfd86d996d3a829b734c8e91ba0605271380c9710",
+        "to_label": null,
+        "amount": 10000000.0,
+        "share_of_supply": 0.01
+      },
+      {
+        "block_time": "2026-09-01 01:00:00",
+        "from_address": "0x5fcbc5ec7fd452eb3edab60ddb8d73fbbba7de82",
+        "from_label": "team_vesting",
+        "to_address": "0xac66dca47e8574f3993987ae0a41db58b297f9b0",
+        "to_label": null,
+        "amount": 10000000.0,
+        "share_of_supply": 0.01
+      }
+    ]
+  },
+  "retention": {
+    "curve": {
+      "0": 1.0,
+      "1": 0.32871334245434536,
+      "2": 0.27413225234355204,
+      "3": 0.23916857875556755,
+      "4": 0.19443840973278298,
+      "5": 0.17529476067775435,
+      "6": 0.14075134770889489,
+      "7": 0.12681950509461426,
+      "8": 0.11240847021571344,
+      "9": 0.10113879806066073,
+      "10": 0.10416394726537005,
+      "11": 0.0984730445621689,
+      "12": 0.08906426155580609
+    },
+    "matrix": [
+      {
+        "cohort_week": "2026-04-27",
+        "cohort_size": 140,
+        "w0": 1.0,
+        "w1": 0.42857142857142855,
+        "w2": 0.3142857142857143,
+        "w3": 0.2785714285714286,
+        "w4": 0.24285714285714285,
+        "w5": 0.19285714285714287,
+        "w6": 0.19285714285714287,
+        "w7": 0.2357142857142857,
+        "w8": 0.1357142857142857,
+        "w9": 0.09285714285714286,
+        "w10": 0.10714285714285714,
+        "w11": 0.1357142857142857,
+        "w12": 0.12857142857142856
+      },
+      {
+        "cohort_week": "2026-05-04",
+        "cohort_size": 402,
+        "w0": 1.0,
+        "w1": 0.31592039800995025,
+        "w2": 0.27611940298507465,
+        "w3": 0.22885572139303484,
+        "w4": 0.20398009950248755,
+        "w5": 0.1865671641791045,
+        "w6": 0.19651741293532338,
+        "w7": 0.15920398009950248,
+        "w8": 0.1318407960199005,
+        "w9": 0.09701492537313433,
+        "w10": 0.10696517412935323,
+        "w11": 0.08208955223880597,
+        "w12": 0.09950248756218906
+      },
+      {
+        "cohort_week": "2026-05-11",
+        "cohort_size": 458,
+        "w0": 1.0,
+        "w1": 0.3558951965065502,
+        "w2": 0.23580786026200873,
+        "w3": 0.2423580786026201,
+        "w4": 0.17903930131004367,
+        "w5": 0.17685589519650655,
+        "w6": 0.14410480349344978,
+        "w7": 0.14192139737991266,
+        "w8": 0.13973799126637554,
+        "w9": 0.11353711790393013,
+        "w10": 0.11353711790393013,
+        "w11": 0.09170305676855896,
+        "w12": 0.14847161572052403
+      },
+      {
+        "cohort_week": "2026-05-18",
+        "cohort_size": 477,
+        "w0": 1.0,
+        "w1": 0.31865828092243187,
+        "w2": 0.3228511530398323,
+        "w3": 0.2620545073375262,
+        "w4": 0.2138364779874214,
+        "w5": 0.1970649895178197,
+        "w6": 0.15932914046121593,
+        "w7": 0.1278825995807128,
+        "w8": 0.11530398322851153,
+        "w9": 0.10482180293501048,
+        "w10": 0.129979035639413,
+        "w11": 0.1719077568134172,
+        "w12": 0.12368972746331237
+      },
+      {
+        "cohort_week": "2026-05-25",
+        "cohort_size": 521,
+        "w0": 1.0,
+        "w1": 0.3742802303262956,
+        "w2": 0.2648752399232246,
+        "w3": 0.23224568138195778,
+        "w4": 0.2072936660268714,
+        "w5": 0.1785028790786948,
+        "w6": 0.15355086372360843,
+        "w7": 0.12859884836852206,
+        "w8": 0.11132437619961612,
+        "w9": 0.10748560460652591,
+        "w10": 0.19001919385796545,
+        "w11": 0.1324376199616123,
+        "w12": 0.08637236084452975
+      },
+      {
+        "cohort_week": "2026-06-01",
+        "cohort_size": 532,
+        "w0": 1.0,
+        "w1": 0.34398496240601506,
+        "w2": 0.2744360902255639,
+        "w3": 0.23684210526315788,
+        "w4": 0.19172932330827067,
+        "w5": 0.15413533834586465,
+        "w6": 0.14473684210526316,
+        "w7": 0.12406015037593984,
+        "w8": 0.14285714285714285,
+        "w9": 0.17481203007518797,
+        "w10": 0.16729323308270677,
+        "w11": 0.12969924812030076,
+        "w12": 0.07330827067669173
+      },
+      {
+        "cohort_week": "2026-06-08",
+        "cohort_size": 586,
+        "w0": 1.0,
+        "w1": 0.3447098976109215,
+        "w2": 0.2627986348122867,
+        "w3": 0.21160409556313994,
+        "w4": 0.18771331058020477,
+        "w5": 0.1689419795221843,
+        "w6": 0.14334470989761092,
+        "w7": 0.12627986348122866,
+        "w8": 0.19965870307167236,
+        "w9": 0.17918088737201365,
+        "w10": 0.13139931740614336,
+        "w11": 0.08873720136518772,
+        "w12": 0.07337883959044368
+      },
+      {
+        "cohort_week": "2026-06-15",
+        "cohort_size": 649,
+        "w0": 1.0,
+        "w1": 0.30970724191063176,
+        "w2": 0.27426810477657937,
+        "w3": 0.23882896764252695,
+        "w4": 0.1864406779661017,
+        "w5": 0.18335901386748846,
+        "w6": 0.13097072419106318,
+        "w7": 0.2172573189522342,
+        "w8": 0.1941448382126348,
+        "w9": 0.12788906009244994,
+        "w10": 0.12326656394453005,
+        "w11": 0.10323574730354391,
+        "w12": 0.08012326656394453
+      },
+      {
+        "cohort_week": "2026-06-22",
+        "cohort_size": 644,
+        "w0": 1.0,
+        "w1": 0.3027950310559006,
+        "w2": 0.3059006211180124,
+        "w3": 0.2453416149068323,
+        "w4": 0.2391304347826087,
+        "w5": 0.15527950310559005,
+        "w6": 0.2267080745341615,
+        "w7": 0.2375776397515528,
+        "w8": 0.13354037267080746,
+        "w9": 0.13043478260869565,
+        "w10": 0.11024844720496894,
+        "w11": 0.08385093167701864,
+        "w12": 0.07763975155279502
+      },
+      {
+        "cohort_week": "2026-06-29",
+        "cohort_size": 913,
+        "w0": 1.0,
+        "w1": 0.2968236582694414,
+        "w2": 0.24315443592552027,
+        "w3": 0.1982475355969332,
+        "w4": 0.14895947426067907,
+        "w5": 0.28148959474260676,
+        "w6": 0.22343921139101863,
+        "w7": 0.11391018619934283,
+        "w8": 0.10733844468784227,
+        "w9": 0.08543263964950712,
+        "w10": 0.07228915662650602,
+        "w11": 0.0755750273822563,
+        "w12": 0.06571741511500548
+      },
+      {
+        "cohort_week": "2026-07-06",
+        "cohort_size": 1096,
+        "w0": 1.0,
+        "w1": 0.2718978102189781,
+        "w2": 0.20255474452554745,
+        "w3": 0.18248175182481752,
+        "w4": 0.24543795620437955,
+        "w5": 0.2509124087591241,
+        "w6": 0.1031021897810219,
+        "w7": 0.09945255474452555,
+        "w8": 0.07481751824817519,
+        "w9": 0.060218978102189784,
+        "w10": 0.05748175182481752,
+        "w11": 0.06934306569343066,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-07-13",
+        "cohort_size": 1243,
+        "w0": 1.0,
+        "w1": 0.28801287208366855,
+        "w2": 0.20917135961383748,
+        "w3": 0.3145615446500402,
+        "w4": 0.2751407884151247,
+        "w5": 0.1263073209975865,
+        "w6": 0.09814963797264682,
+        "w7": 0.08769106999195495,
+        "w8": 0.08125502815768303,
+        "w9": 0.08045052292839903,
+        "w10": 0.06516492357200322,
+        "w11": null,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-07-20",
+        "cohort_size": 1208,
+        "w0": 1.0,
+        "w1": 0.28394039735099336,
+        "w2": 0.35513245033112584,
+        "w3": 0.2996688741721854,
+        "w4": 0.12996688741721854,
+        "w5": 0.12417218543046357,
+        "w6": 0.1076158940397351,
+        "w7": 0.076158940397351,
+        "w8": 0.07781456953642384,
+        "w9": 0.06456953642384106,
+        "w10": null,
+        "w11": null,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-07-27",
+        "cohort_size": 1237,
+        "w0": 1.0,
+        "w1": 0.3734842360549717,
+        "w2": 0.3120452708164915,
+        "w3": 0.19644300727566694,
+        "w4": 0.1576394502829426,
+        "w5": 0.14227970897332257,
+        "w6": 0.10024252223120453,
+        "w7": 0.10428455941794665,
+        "w8": 0.08649959579628133,
+        "w9": null,
+        "w10": null,
+        "w11": null,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-08-03",
+        "cohort_size": 886,
+        "w0": 1.0,
+        "w1": 0.34198645598194133,
+        "w2": 0.2832957110609481,
+        "w3": 0.2528216704288939,
+        "w4": 0.18171557562076748,
+        "w5": 0.16591422121896163,
+        "w6": 0.13769751693002258,
+        "w7": 0.1433408577878104,
+        "w8": null,
+        "w9": null,
+        "w10": null,
+        "w11": null,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-08-10",
+        "cohort_size": 880,
+        "w0": 1.0,
+        "w1": 0.32954545454545453,
+        "w2": 0.30227272727272725,
+        "w3": 0.20681818181818182,
+        "w4": 0.18522727272727274,
+        "w5": 0.18522727272727274,
+        "w6": 0.15454545454545454,
+        "w7": null,
+        "w8": null,
+        "w9": null,
+        "w10": null,
+        "w11": null,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-08-17",
+        "cohort_size": 935,
+        "w0": 1.0,
+        "w1": 0.3679144385026738,
+        "w2": 0.2748663101604278,
+        "w3": 0.23422459893048128,
+        "w4": 0.1711229946524064,
+        "w5": 0.16042780748663102,
+        "w6": null,
+        "w7": null,
+        "w8": null,
+        "w9": null,
+        "w10": null,
+        "w11": null,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-08-24",
+        "cohort_size": 1002,
+        "w0": 1.0,
+        "w1": 0.35528942115768464,
+        "w2": 0.2654690618762475,
+        "w3": 0.2435129740518962,
+        "w4": 0.20658682634730538,
+        "w5": null,
+        "w6": null,
+        "w7": null,
+        "w8": null,
+        "w9": null,
+        "w10": null,
+        "w11": null,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-08-31",
+        "cohort_size": 1009,
+        "w0": 1.0,
+        "w1": 0.3389494549058474,
+        "w2": 0.267591674925669,
+        "w3": 0.244796828543112,
+        "w4": null,
+        "w5": null,
+        "w6": null,
+        "w7": null,
+        "w8": null,
+        "w9": null,
+        "w10": null,
+        "w11": null,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-09-07",
+        "cohort_size": 970,
+        "w0": 1.0,
+        "w1": 0.3422680412371134,
+        "w2": 0.277319587628866,
+        "w3": null,
+        "w4": null,
+        "w5": null,
+        "w6": null,
+        "w7": null,
+        "w8": null,
+        "w9": null,
+        "w10": null,
+        "w11": null,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-09-14",
+        "cohort_size": 1023,
+        "w0": 1.0,
+        "w1": 0.3411534701857282,
+        "w2": null,
+        "w3": null,
+        "w4": null,
+        "w5": null,
+        "w6": null,
+        "w7": null,
+        "w8": null,
+        "w9": null,
+        "w10": null,
+        "w11": null,
+        "w12": null
+      },
+      {
+        "cohort_week": "2026-09-21",
+        "cohort_size": 1081,
+        "w0": 1.0,
+        "w1": null,
+        "w2": null,
+        "w3": null,
+        "w4": null,
+        "w5": null,
+        "w6": null,
+        "w7": null,
+        "w8": null,
+        "w9": null,
+        "w10": null,
+        "w11": null,
+        "w12": null
+      }
+    ],
+    "monthly_churn": [
+      {
+        "month": "2026-05",
+        "active": 1998,
+        "retained_next_month": 1198,
+        "churn_rate": 0.40040040040040037
+      },
+      {
+        "month": "2026-06",
+        "active": 3799,
+        "retained_next_month": 2055,
+        "churn_rate": 0.4590681758357462
+      },
+      {
+        "month": "2026-07",
+        "active": 7496,
+        "retained_next_month": 4640,
+        "churn_rate": 0.3810032017075774
+      },
+      {
+        "month": "2026-08",
+        "active": 9338,
+        "retained_next_month": 4122,
+        "churn_rate": 0.5585778539301778
+      }
+    ],
+    "dormant_share_30d": 0.49032961046036505,
+    "one_and_done_share": 0.26908199400708255
+  },
+  "channels": [
+    {
+      "channel": "organic",
+      "new_traders": 6518,
+      "spend_usd": 0.0,
+      "cac_usd": 0.0,
+      "d30_retention": 0.8616954801083108,
+      "ltv_30d_fees_usd": 12.485179939646585,
+      "ltv_cac": null
+    },
+    {
+      "channel": "quest_platform",
+      "new_traders": 5224,
+      "spend_usd": 248739.29787381773,
+      "cac_usd": 47.61472011367108,
+      "d30_retention": 0.49733857903263134,
+      "ltv_30d_fees_usd": 3.598260902428971,
+      "ltv_cac": 0.07557034660371431
+    },
+    {
+      "channel": "twitter_ads",
+      "new_traders": 4102,
+      "spend_usd": 229535.51023612393,
+      "cac_usd": 55.95697470407702,
+      "d30_retention": 0.7571189279731994,
+      "ltv_30d_fees_usd": 5.5034156387224495,
+      "ltv_cac": 0.09835084308661653
+    },
+    {
+      "channel": "kol_referral",
+      "new_traders": 2510,
+      "spend_usd": 112491.55689251472,
+      "cac_usd": 44.81735334363136,
+      "d30_retention": 0.8080213903743315,
+      "ltv_30d_fees_usd": 6.0212062488514295,
+      "ltv_cac": 0.134349884578962
+    }
+  ],
+  "funnel": {
+    "overall": {
+      "sessions": 247358.0,
+      "connected": 165565.0,
+      "quoted": 126661.0,
+      "submitted": 54311.0,
+      "confirmed": 51493.0,
+      "sessions_to_connected": 0.6693335166034654,
+      "connected_to_quoted": 0.765022800712711,
+      "quoted_to_submitted": 0.4287902353526342,
+      "submitted_to_confirmed": 0.9481136418036862,
+      "overall": 0.20817196128687976
+    },
+    "by_returning": [
+      {
+        "is_returning": false,
+        "sessions": 131715,
+        "connected": 59225.0,
+        "quoted": 41402.0,
+        "submitted": 15104.0,
+        "confirmed": 14027.0,
+        "sessions_to_connected": 0.44964506700072127,
+        "connected_to_quoted": 0.6990628957365977,
+        "quoted_to_submitted": 0.364813294043766,
+        "submitted_to_confirmed": 0.9286943855932204,
+        "overall": 0.10649508408305812
+      },
+      {
+        "is_returning": true,
+        "sessions": 115643,
+        "connected": 106340.0,
+        "quoted": 85259.0,
+        "submitted": 39207.0,
+        "confirmed": 37466.0,
+        "sessions_to_connected": 0.9195541450844409,
+        "connected_to_quoted": 0.801758510438217,
+        "quoted_to_submitted": 0.45985761034025735,
+        "submitted_to_confirmed": 0.9555946642181243,
+        "overall": 0.32397983449063067
+      }
+    ],
+    "biggest_dropoff": {
+      "step": "quoted->submitted",
+      "rate": 0.4287902353526342
+    }
+  },
+  "experiment": {
+    "user_level": {
+      "n_a": 7932,
+      "n_b": 7900,
+      "rate_a": 0.5127332324760464,
+      "rate_b": 0.5653164556962025,
+      "abs_lift": 0.05258322322015607,
+      "rel_lift": 0.10255473975467862,
+      "ci_low": 0.03707558478681065,
+      "ci_high": 0.06809086165350149,
+      "z": 6.636474624125338,
+      "p_value": 3.2127411841997855e-11,
+      "significant": true
+    },
+    "session_level": {
+      "n_a": 16121,
+      "n_b": 16312,
+      "rate_a": 0.42497363687116185,
+      "rate_b": 0.48185384992643454,
+      "abs_lift": 0.05688021305527269,
+      "rel_lift": 0.1338440978928698,
+      "ci_low": 0.04606225802968575,
+      "ci_high": 0.06769816808085963,
+      "z": 10.287904093909658,
+      "p_value": 0.0,
+      "significant": true
+    },
+    "srm": {
+      "chi2": 0.09864822739252416,
+      "p_value": 0.7534578840559608,
+      "srm_detected": false
+    },
+    "mde_abs": 0.022280986693994028,
+    "projected_extra_swaps_per_month": 1999.7377613986125,
+    "projected_extra_lp_fees_per_month": 7847.648824421134,
+    "projected_extra_volume_per_month": 2615882.9414737113
+  },
+  "segments": {
+    "tiers": [
+      {
+        "tier": "whale (>$100k)",
+        "wallets": 41,
+        "volume_usd": 35846514.264331594,
+        "median_active_days": 17.0,
+        "wallet_share": 0.0022337237809861073,
+        "volume_share": 0.47279545823284597
+      },
+      {
+        "tier": "fish ($1k-10k)",
+        "wallets": 10817,
+        "volume_usd": 32451387.769055717,
+        "median_active_days": 3.0,
+        "wallet_share": 0.5893217107055299,
+        "volume_share": 0.42801564016585864
+      },
+      {
+        "tier": "dolphin ($10k-100k)",
+        "wallets": 303,
+        "volume_usd": 4127428.973788716,
+        "median_active_days": 5.0,
+        "wallet_share": 0.016507763552165624,
+        "volume_share": 0.0544384778557868
+      },
+      {
+        "tier": "shrimp (<$1k)",
+        "wallets": 7194,
+        "volume_usd": 3392897.8698823187,
+        "median_active_days": 1.0,
+        "wallet_share": 0.3919368019613184,
+        "volume_share": 0.04475042374550862
+      }
+    ],
+    "behaviour": [
+      {
+        "behaviour": "power trader",
+        "wallets": 582,
+        "volume_usd": 39288752.99851319,
+        "median_active_days": 9.0,
+        "wallet_share": 0.031707981476436935,
+        "volume_share": 0.518196660360151
+      },
+      {
+        "behaviour": "occasional trader",
+        "wallets": 12834,
+        "volume_usd": 32729427.310597647,
+        "median_active_days": 3.0,
+        "wallet_share": 0.6992100245164805,
+        "volume_share": 0.43168282608750264
+      },
+      {
+        "behaviour": "one-and-done",
+        "wallets": 4939,
+        "volume_usd": 3800048.567947507,
+        "median_active_days": 1.0,
+        "wallet_share": 0.26908199400708255,
+        "volume_share": 0.05012051355234644
+      }
+    ],
+    "rfm": [
+      {
+        "segment": "needs attention",
+        "wallets": 7814
+      },
+      {
+        "segment": "hibernating",
+        "wallets": 3448
+      },
+      {
+        "segment": "new / promising",
+        "wallets": 2645
+      },
+      {
+        "segment": "champions",
+        "wallets": 2438
+      },
+      {
+        "segment": "at risk (was valuable)",
+        "wallets": 2010
+      }
+    ]
+  },
+  "tokenomics": {
+    "concentration": {
+      "holders": 11215,
+      "gini": 0.936052203539901,
+      "top10_share": 0.7295529511896818,
+      "top100_share": 0.8124534099569436,
+      "nakamoto": 3
+    },
+    "holders_start": 18,
+    "holders_end": 11218,
+    "holders_series": [
+      {
+        "day": "2026-05-01 00:00:00",
+        "holders": 18
+      },
+      {
+        "day": "2026-05-02 00:00:00",
+        "holders": 30
+      },
+      {
+        "day": "2026-05-03 00:00:00",
+        "holders": 42
+      },
+      {
+        "day": "2026-05-04 00:00:00",
+        "holders": 52
+      },
+      {
+        "day": "2026-05-05 00:00:00",
+        "holders": 63
+      },
+      {
+        "day": "2026-05-06 00:00:00",
+        "holders": 74
+      },
+      {
+        "day": "2026-05-07 00:00:00",
+        "holders": 92
+      },
+      {
+        "day": "2026-05-08 00:00:00",
+        "holders": 103
+      },
+      {
+        "day": "2026-05-09 00:00:00",
+        "holders": 123
+      },
+      {
+        "day": "2026-05-10 00:00:00",
+        "holders": 135
+      },
+      {
+        "day": "2026-05-11 00:00:00",
+        "holders": 156
+      },
+      {
+        "day": "2026-05-12 00:00:00",
+        "holders": 166
+      },
+      {
+        "day": "2026-05-13 00:00:00",
+        "holders": 191
+      },
+      {
+        "day": "2026-05-14 00:00:00",
+        "holders": 219
+      },
+      {
+        "day": "2026-05-15 00:00:00",
+        "holders": 243
+      },
+      {
+        "day": "2026-05-16 00:00:00",
+        "holders": 257
+      },
+      {
+        "day": "2026-05-17 00:00:00",
+        "holders": 279
+      },
+      {
+        "day": "2026-05-18 00:00:00",
+        "holders": 305
+      },
+      {
+        "day": "2026-05-19 00:00:00",
+        "holders": 322
+      },
+      {
+        "day": "2026-05-20 00:00:00",
+        "holders": 346
+      },
+      {
+        "day": "2026-05-21 00:00:00",
+        "holders": 364
+      },
+      {
+        "day": "2026-05-22 00:00:00",
+        "holders": 383
+      },
+      {
+        "day": "2026-05-23 00:00:00",
+        "holders": 414
+      },
+      {
+        "day": "2026-05-24 00:00:00",
+        "holders": 438
+      },
+      {
+        "day": "2026-05-25 00:00:00",
+        "holders": 457
+      },
+      {
+        "day": "2026-05-26 00:00:00",
+        "holders": 482
+      },
+      {
+        "day": "2026-05-27 00:00:00",
+        "holders": 502
+      },
+      {
+        "day": "2026-05-28 00:00:00",
+        "holders": 523
+      },
+      {
+        "day": "2026-05-29 00:00:00",
+        "holders": 553
+      },
+      {
+        "day": "2026-05-30 00:00:00",
+        "holders": 582
+      },
+      {
+        "day": "2026-05-31 00:00:00",
+        "holders": 616
+      },
+      {
+        "day": "2026-06-01 00:00:00",
+        "holders": 647
+      },
+      {
+        "day": "2026-06-02 00:00:00",
+        "holders": 671
+      },
+      {
+        "day": "2026-06-03 00:00:00",
+        "holders": 717
+      },
+      {
+        "day": "2026-06-04 00:00:00",
+        "holders": 737
+      },
+      {
+        "day": "2026-06-05 00:00:00",
+        "holders": 765
+      },
+      {
+        "day": "2026-06-06 00:00:00",
+        "holders": 794
+      },
+      {
+        "day": "2026-06-07 00:00:00",
+        "holders": 827
+      },
+      {
+        "day": "2026-06-08 00:00:00",
+        "holders": 852
+      },
+      {
+        "day": "2026-06-09 00:00:00",
+        "holders": 875
+      },
+      {
+        "day": "2026-06-10 00:00:00",
+        "holders": 903
+      },
+      {
+        "day": "2026-06-11 00:00:00",
+        "holders": 933
+      },
+      {
+        "day": "2026-06-12 00:00:00",
+        "holders": 969
+      },
+      {
+        "day": "2026-06-13 00:00:00",
+        "holders": 1018
+      },
+      {
+        "day": "2026-06-14 00:00:00",
+        "holders": 1055
+      },
+      {
+        "day": "2026-06-15 00:00:00",
+        "holders": 1101
+      },
+      {
+        "day": "2026-06-16 00:00:00",
+        "holders": 1128
+      },
+      {
+        "day": "2026-06-17 00:00:00",
+        "holders": 1175
+      },
+      {
+        "day": "2026-06-18 00:00:00",
+        "holders": 1209
+      },
+      {
+        "day": "2026-06-19 00:00:00",
+        "holders": 1243
+      },
+      {
+        "day": "2026-06-20 00:00:00",
+        "holders": 1282
+      },
+      {
+        "day": "2026-06-21 00:00:00",
+        "holders": 1327
+      },
+      {
+        "day": "2026-06-22 00:00:00",
+        "holders": 1367
+      },
+      {
+        "day": "2026-06-23 00:00:00",
+        "holders": 1408
+      },
+      {
+        "day": "2026-06-24 00:00:00",
+        "holders": 1441
+      },
+      {
+        "day": "2026-06-25 00:00:00",
+        "holders": 1480
+      },
+      {
+        "day": "2026-06-26 00:00:00",
+        "holders": 1513
+      },
+      {
+        "day": "2026-06-27 00:00:00",
+        "holders": 1549
+      },
+      {
+        "day": "2026-06-28 00:00:00",
+        "holders": 1579
+      },
+      {
+        "day": "2026-06-29 00:00:00",
+        "holders": 1621
+      },
+      {
+        "day": "2026-06-30 00:00:00",
+        "holders": 1657
+      },
+      {
+        "day": "2026-07-01 00:00:00",
+        "holders": 1708
+      },
+      {
+        "day": "2026-07-02 00:00:00",
+        "holders": 1754
+      },
+      {
+        "day": "2026-07-03 00:00:00",
+        "holders": 1789
+      },
+      {
+        "day": "2026-07-04 00:00:00",
+        "holders": 1846
+      },
+      {
+        "day": "2026-07-05 00:00:00",
+        "holders": 1902
+      },
+      {
+        "day": "2026-07-06 00:00:00",
+        "holders": 1966
+      },
+      {
+        "day": "2026-07-07 00:00:00",
+        "holders": 2015
+      },
+      {
+        "day": "2026-07-08 00:00:00",
+        "holders": 2075
+      },
+      {
+        "day": "2026-07-09 00:00:00",
+        "holders": 2138
+      },
+      {
+        "day": "2026-07-10 00:00:00",
+        "holders": 2208
+      },
+      {
+        "day": "2026-07-11 00:00:00",
+        "holders": 2265
+      },
+      {
+        "day": "2026-07-12 00:00:00",
+        "holders": 2315
+      },
+      {
+        "day": "2026-07-13 00:00:00",
+        "holders": 2385
+      },
+      {
+        "day": "2026-07-14 00:00:00",
+        "holders": 2454
+      },
+      {
+        "day": "2026-07-15 00:00:00",
+        "holders": 2510
+      },
+      {
+        "day": "2026-07-16 00:00:00",
+        "holders": 2566
+      },
+      {
+        "day": "2026-07-17 00:00:00",
+        "holders": 2626
+      },
+      {
+        "day": "2026-07-18 00:00:00",
+        "holders": 2703
+      },
+      {
+        "day": "2026-07-19 00:00:00",
+        "holders": 2760
+      },
+      {
+        "day": "2026-07-20 00:00:00",
+        "holders": 2821
+      },
+      {
+        "day": "2026-07-21 00:00:00",
+        "holders": 2889
+      },
+      {
+        "day": "2026-07-22 00:00:00",
+        "holders": 2972
+      },
+      {
+        "day": "2026-07-23 00:00:00",
+        "holders": 3035
+      },
+      {
+        "day": "2026-07-24 00:00:00",
+        "holders": 3093
+      },
+      {
+        "day": "2026-07-25 00:00:00",
+        "holders": 3166
+      },
+      {
+        "day": "2026-07-26 00:00:00",
+        "holders": 3223
+      },
+      {
+        "day": "2026-07-27 00:00:00",
+        "holders": 3295
+      },
+      {
+        "day": "2026-07-28 00:00:00",
+        "holders": 3367
+      },
+      {
+        "day": "2026-07-29 00:00:00",
+        "holders": 3440
+      },
+      {
+        "day": "2026-07-30 00:00:00",
+        "holders": 3509
+      },
+      {
+        "day": "2026-07-31 00:00:00",
+        "holders": 3572
+      },
+      {
+        "day": "2026-08-01 00:00:00",
+        "holders": 4816
+      },
+      {
+        "day": "2026-08-02 00:00:00",
+        "holders": 5256
+      },
+      {
+        "day": "2026-08-03 00:00:00",
+        "holders": 5708
+      },
+      {
+        "day": "2026-08-04 00:00:00",
+        "holders": 6160
+      },
+      {
+        "day": "2026-08-05 00:00:00",
+        "holders": 6605
+      },
+      {
+        "day": "2026-08-06 00:00:00",
+        "holders": 7003
+      },
+      {
+        "day": "2026-08-07 00:00:00",
+        "holders": 7418
+      },
+      {
+        "day": "2026-08-08 00:00:00",
+        "holders": 7840
+      },
+      {
+        "day": "2026-08-09 00:00:00",
+        "holders": 8293
+      },
+      {
+        "day": "2026-08-10 00:00:00",
+        "holders": 8703
+      },
+      {
+        "day": "2026-08-11 00:00:00",
+        "holders": 8739
+      },
+      {
+        "day": "2026-08-12 00:00:00",
+        "holders": 8768
+      },
+      {
+        "day": "2026-08-13 00:00:00",
+        "holders": 8792
+      },
+      {
+        "day": "2026-08-14 00:00:00",
+        "holders": 8808
+      },
+      {
+        "day": "2026-08-15 00:00:00",
+        "holders": 8834
+      },
+      {
+        "day": "2026-08-16 00:00:00",
+        "holders": 8874
+      },
+      {
+        "day": "2026-08-17 00:00:00",
+        "holders": 8908
+      },
+      {
+        "day": "2026-08-18 00:00:00",
+        "holders": 8936
+      },
+      {
+        "day": "2026-08-19 00:00:00",
+        "holders": 8964
+      },
+      {
+        "day": "2026-08-20 00:00:00",
+        "holders": 9011
+      },
+      {
+        "day": "2026-08-21 00:00:00",
+        "holders": 9057
+      },
+      {
+        "day": "2026-08-22 00:00:00",
+        "holders": 9103
+      },
+      {
+        "day": "2026-08-23 00:00:00",
+        "holders": 9157
+      },
+      {
+        "day": "2026-08-24 00:00:00",
+        "holders": 9204
+      },
+      {
+        "day": "2026-08-25 00:00:00",
+        "holders": 9250
+      },
+      {
+        "day": "2026-08-26 00:00:00",
+        "holders": 9278
+      },
+      {
+        "day": "2026-08-27 00:00:00",
+        "holders": 9321
+      },
+      {
+        "day": "2026-08-28 00:00:00",
+        "holders": 9372
+      },
+      {
+        "day": "2026-08-29 00:00:00",
+        "holders": 9427
+      },
+      {
+        "day": "2026-08-30 00:00:00",
+        "holders": 9466
+      },
+      {
+        "day": "2026-08-31 00:00:00",
+        "holders": 9528
+      },
+      {
+        "day": "2026-09-01 00:00:00",
+        "holders": 9584
+      },
+      {
+        "day": "2026-09-02 00:00:00",
+        "holders": 9629
+      },
+      {
+        "day": "2026-09-03 00:00:00",
+        "holders": 9688
+      },
+      {
+        "day": "2026-09-04 00:00:00",
+        "holders": 9739
+      },
+      {
+        "day": "2026-09-05 00:00:00",
+        "holders": 9796
+      },
+      {
+        "day": "2026-09-06 00:00:00",
+        "holders": 9844
+      },
+      {
+        "day": "2026-09-07 00:00:00",
+        "holders": 9891
+      },
+      {
+        "day": "2026-09-08 00:00:00",
+        "holders": 9943
+      },
+      {
+        "day": "2026-09-09 00:00:00",
+        "holders": 9998
+      },
+      {
+        "day": "2026-09-10 00:00:00",
+        "holders": 10050
+      },
+      {
+        "day": "2026-09-11 00:00:00",
+        "holders": 10090
+      },
+      {
+        "day": "2026-09-12 00:00:00",
+        "holders": 10140
+      },
+      {
+        "day": "2026-09-13 00:00:00",
+        "holders": 10199
+      },
+      {
+        "day": "2026-09-14 00:00:00",
+        "holders": 10253
+      },
+      {
+        "day": "2026-09-15 00:00:00",
+        "holders": 10306
+      },
+      {
+        "day": "2026-09-16 00:00:00",
+        "holders": 10376
+      },
+      {
+        "day": "2026-09-17 00:00:00",
+        "holders": 10432
+      },
+      {
+        "day": "2026-09-18 00:00:00",
+        "holders": 10465
+      },
+      {
+        "day": "2026-09-19 00:00:00",
+        "holders": 10535
+      },
+      {
+        "day": "2026-09-20 00:00:00",
+        "holders": 10605
+      },
+      {
+        "day": "2026-09-21 00:00:00",
+        "holders": 10676
+      },
+      {
+        "day": "2026-09-22 00:00:00",
+        "holders": 10731
+      },
+      {
+        "day": "2026-09-23 00:00:00",
+        "holders": 10775
+      },
+      {
+        "day": "2026-09-24 00:00:00",
+        "holders": 10828
+      },
+      {
+        "day": "2026-09-25 00:00:00",
+        "holders": 10895
+      },
+      {
+        "day": "2026-09-26 00:00:00",
+        "holders": 10962
+      },
+      {
+        "day": "2026-09-27 00:00:00",
+        "holders": 11018
+      },
+      {
+        "day": "2026-09-28 00:00:00",
+        "holders": 11097
+      },
+      {
+        "day": "2026-09-29 00:00:00",
+        "holders": 11172
+      },
+      {
+        "day": "2026-09-30 00:00:00",
+        "holders": 11218
+      }
+    ],
+    "airdrop": [
+      {
+        "recipient_type": "genuine",
+        "recipients": 6391,
+        "claimed_tokens": 20033676.001417935,
+        "median_minutes_to_claim": 7201.0,
+        "sold_24h_tokens": 665306.2436111575,
+        "sold_7d_tokens": 6336284.292567489,
+        "sold_7d_usd": 210898.83060679014,
+        "claimed_usd_at_t0": 755594.7458230272,
+        "sell_through_24h": 0.03320939420024906,
+        "sell_through_7d": 0.31628165954760484,
+        "share_of_airdrop": 0.7548417256578068
+      },
+      {
+        "recipient_type": "sybil",
+        "recipients": 799,
+        "claimed_tokens": 6506557.958170861,
+        "median_minutes_to_claim": 126.0,
+        "sold_24h_tokens": 6500051.40021269,
+        "sold_7d_tokens": 6500051.40021269,
+        "sold_7d_usd": 232328.27607064374,
+        "claimed_usd_at_t0": 245402.84100825738,
+        "sell_through_24h": 0.999,
+        "sell_through_7d": 0.999,
+        "share_of_airdrop": 0.24515827434219314
+      }
+    ],
+    "demo_price_change_airdrop_week": -0.21537777597585483,
+    "balances_by_type": [
+      {
+        "holder_type": "wallet",
+        "share": 0.28870159866508904
+      },
+      {
+        "holder_type": "treasury",
+        "share": 0.25
+      },
+      {
+        "holder_type": "team_vesting",
+        "share": 0.16
+      },
+      {
+        "holder_type": "investor_custody",
+        "share": 0.15
+      },
+      {
+        "holder_type": "ecosystem_fund",
+        "share": 0.07
+      },
+      {
+        "holder_type": "amm_pool",
+        "share": 0.04240435703026879
+      },
+      {
+        "holder_type": "market_maker",
+        "share": 0.01666710920070735
+      },
+      {
+        "holder_type": "cex_hot_wallet",
+        "share": 0.01426102313613081
+      },
+      {
+        "holder_type": "mev_bot",
+        "share": 0.004506145927398115
+      },
+      {
+        "holder_type": "airdrop_distributor",
+        "share": 0.0034597660404123813
+      }
+    ]
+  },
+  "defi": {
+    "pools": [
+      {
+        "pool": "DEMO-WETH",
+        "days": 153,
+        "price_ratio": 1.5243006748074204,
+        "impermanent_loss": -0.021807714998578476,
+        "fee_yield": 0.03844691613616964,
+        "fee_apr": 0.09171976725295372,
+        "net_vs_hodl": 0.016639201137591167,
+        "avg_tvl_usd": 2779604.175177055,
+        "volume_tvl_ratio": 0.07014624185744328,
+        "breakeven_daily_volume": 132062.7792181264,
+        "actual_avg_daily_volume": 194978.7867399288
+      },
+      {
+        "pool": "WETH-USDC",
+        "days": 153,
+        "price_ratio": 0.5835667826561697,
+        "impermanent_loss": -0.03519644720841175,
+        "fee_yield": 0.01171656027125936,
+        "fee_apr": 0.027951271235357292,
+        "net_vs_hodl": -0.023479886937152392,
+        "avg_tvl_usd": 22651407.37189545,
+        "volume_tvl_ratio": 0.0251913825404601,
+        "breakeven_daily_volume": 1736926.0648391,
+        "actual_avg_daily_volume": 570620.2681852162
+      },
+      {
+        "pool": "USDC-USDT",
+        "days": 153,
+        "price_ratio": 0.9993526484525127,
+        "impermanent_loss": -5.2416931239918085e-08,
+        "fee_yield": 0.004784509443319341,
+        "fee_apr": 0.011414025796153983,
+        "net_vs_hodl": 0.004784457026388101,
+        "avg_tvl_usd": 11558275.95761277,
+        "volume_tvl_ratio": 0.010538716134400307,
+        "breakeven_daily_volume": 1.3199332377389692,
+        "actual_avg_daily_volume": 121809.38932034485
+      }
+    ],
+    "top_lp_share_of_deposits": 0.5264958492546641,
+    "biggest_tvl_drop_day": "2026-09-12",
+    "biggest_tvl_drop_pct": -0.3025802663002767,
+    "lp_count": 94
+  },
+  "series": {
+    "day": [
+      "2026-05-01",
+      "2026-05-02",
+      "2026-05-03",
+      "2026-05-04",
+      "2026-05-05",
+      "2026-05-06",
+      "2026-05-07",
+      "2026-05-08",
+      "2026-05-09",
+      "2026-05-10",
+      "2026-05-11",
+      "2026-05-12",
+      "2026-05-13",
+      "2026-05-14",
+      "2026-05-15",
+      "2026-05-16",
+      "2026-05-17",
+      "2026-05-18",
+      "2026-05-19",
+      "2026-05-20",
+      "2026-05-21",
+      "2026-05-22",
+      "2026-05-23",
+      "2026-05-24",
+      "2026-05-25",
+      "2026-05-26",
+      "2026-05-27",
+      "2026-05-28",
+      "2026-05-29",
+      "2026-05-30",
+      "2026-05-31",
+      "2026-06-01",
+      "2026-06-02",
+      "2026-06-03",
+      "2026-06-04",
+      "2026-06-05",
+      "2026-06-06",
+      "2026-06-07",
+      "2026-06-08",
+      "2026-06-09",
+      "2026-06-10",
+      "2026-06-11",
+      "2026-06-12",
+      "2026-06-13",
+      "2026-06-14",
+      "2026-06-15",
+      "2026-06-16",
+      "2026-06-17",
+      "2026-06-18",
+      "2026-06-19",
+      "2026-06-20",
+      "2026-06-21",
+      "2026-06-22",
+      "2026-06-23",
+      "2026-06-24",
+      "2026-06-25",
+      "2026-06-26",
+      "2026-06-27",
+      "2026-06-28",
+      "2026-06-29",
+      "2026-06-30",
+      "2026-07-01",
+      "2026-07-02",
+      "2026-07-03",
+      "2026-07-04",
+      "2026-07-05",
+      "2026-07-06",
+      "2026-07-07",
+      "2026-07-08",
+      "2026-07-09",
+      "2026-07-10",
+      "2026-07-11",
+      "2026-07-12",
+      "2026-07-13",
+      "2026-07-14",
+      "2026-07-15",
+      "2026-07-16",
+      "2026-07-17",
+      "2026-07-18",
+      "2026-07-19",
+      "2026-07-20",
+      "2026-07-21",
+      "2026-07-22",
+      "2026-07-23",
+      "2026-07-24",
+      "2026-07-25",
+      "2026-07-26",
+      "2026-07-27",
+      "2026-07-28",
+      "2026-07-29",
+      "2026-07-30",
+      "2026-07-31",
+      "2026-08-01",
+      "2026-08-02",
+      "2026-08-03",
+      "2026-08-04",
+      "2026-08-05",
+      "2026-08-06",
+      "2026-08-07",
+      "2026-08-08",
+      "2026-08-09",
+      "2026-08-10",
+      "2026-08-11",
+      "2026-08-12",
+      "2026-08-13",
+      "2026-08-14",
+      "2026-08-15",
+      "2026-08-16",
+      "2026-08-17",
+      "2026-08-18",
+      "2026-08-19",
+      "2026-08-20",
+      "2026-08-21",
+      "2026-08-22",
+      "2026-08-23",
+      "2026-08-24",
+      "2026-08-25",
+      "2026-08-26",
+      "2026-08-27",
+      "2026-08-28",
+      "2026-08-29",
+      "2026-08-30",
+      "2026-08-31",
+      "2026-09-01",
+      "2026-09-02",
+      "2026-09-03",
+      "2026-09-04",
+      "2026-09-05",
+      "2026-09-06",
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09",
+      "2026-09-10",
+      "2026-09-11",
+      "2026-09-12",
+      "2026-09-13",
+      "2026-09-14",
+      "2026-09-15",
+      "2026-09-16",
+      "2026-09-17",
+      "2026-09-18",
+      "2026-09-19",
+      "2026-09-20",
+      "2026-09-21",
+      "2026-09-22",
+      "2026-09-23",
+      "2026-09-24",
+      "2026-09-25",
+      "2026-09-26",
+      "2026-09-27",
+      "2026-09-28",
+      "2026-09-29",
+      "2026-09-30"
+    ],
+    "tvl_usd": [
+      32022174.0,
+      32337649.0,
+      32269847.0,
+      32021468.0,
+      32318653.0,
+      32210537.0,
+      32638280.0,
+      32854949.0,
+      33079572.0,
+      32734922.0,
+      32006600.0,
+      31358631.0,
+      31045864.0,
+      31728545.0,
+      30863039.0,
+      30924427.0,
+      30414289.0,
+      30040143.0,
+      30386844.0,
+      30512671.0,
+      30606621.0,
+      30759019.0,
+      30374193.0,
+      31000164.0,
+      31388429.0,
+      31512259.0,
+      31760718.0,
+      31850250.0,
+      31909401.0,
+      31988745.0,
+      33209978.0,
+      33654096.0,
+      33603413.0,
+      33621856.0,
+      34147905.0,
+      33598139.0,
+      33675987.0,
+      33517208.0,
+      34099581.0,
+      33975298.0,
+      34097269.0,
+      33924481.0,
+      34512236.0,
+      34352139.0,
+      34601337.0,
+      35199110.0,
+      35314591.0,
+      35655791.0,
+      35848851.0,
+      35389521.0,
+      34866150.0,
+      34936377.0,
+      35304872.0,
+      35205678.0,
+      35437556.0,
+      35642090.0,
+      36217698.0,
+      36141157.0,
+      36385907.0,
+      36428076.0,
+      36962894.0,
+      37145074.0,
+      37036630.0,
+      36759757.0,
+      36522231.0,
+      36331339.0,
+      36117060.0,
+      36356659.0,
+      36967517.0,
+      37221604.0,
+      38070339.0,
+      38719945.0,
+      38858193.0,
+      38549328.0,
+      39376678.0,
+      39887612.0,
+      39641658.0,
+      39408280.0,
+      39257181.0,
+      38707496.0,
+      39373762.0,
+      38979089.0,
+      39603653.0,
+      39502239.0,
+      39070065.0,
+      39210426.0,
+      39142651.0,
+      39047154.0,
+      38691784.0,
+      39327691.0,
+      39440652.0,
+      39390260.0,
+      39875419.0,
+      40050114.0,
+      40663021.0,
+      40806618.0,
+      40258303.0,
+      40849400.0,
+      41231367.0,
+      42401697.0,
+      42285216.0,
+      41811636.0,
+      42289260.0,
+      43466610.0,
+      42948923.0,
+      43289581.0,
+      43792729.0,
+      42986441.0,
+      43116384.0,
+      43580343.0,
+      43499879.0,
+      43438256.0,
+      43029838.0,
+      43044278.0,
+      42971843.0,
+      42761042.0,
+      42972175.0,
+      43343372.0,
+      44304095.0,
+      44891953.0,
+      44940952.0,
+      44718650.0,
+      44972679.0,
+      44885642.0,
+      45063719.0,
+      44675494.0,
+      43365671.0,
+      44026916.0,
+      43504121.0,
+      44043137.0,
+      44278136.0,
+      44410550.0,
+      44770492.0,
+      44511607.0,
+      31043273.0,
+      30871281.0,
+      30833301.0,
+      31305536.0,
+      31696396.0,
+      32023882.0,
+      32190649.0,
+      32897025.0,
+      32920074.0,
+      33245831.0,
+      33442440.0,
+      33664945.0,
+      33660431.0,
+      34067800.0,
+      34524156.0,
+      34600813.0,
+      34933361.0,
+      35504404.0,
+      35647674.0
+    ],
+    "fee_apr": [
+      0.00524,
+      0.02288,
+      0.01246,
+      0.00568,
+      0.00433,
+      0.01131,
+      0.0127,
+      0.01607,
+      0.01168,
+      0.01521,
+      0.01702,
+      0.01156,
+      0.01484,
+      0.0166,
+      0.0115,
+      0.01037,
+      0.01328,
+      0.02407,
+      0.01238,
+      0.01582,
+      0.02971,
+      0.02842,
+      0.03862,
+      0.02687,
+      0.03574,
+      0.02829,
+      0.01182,
+      0.01034,
+      0.00737,
+      0.0253,
+      0.02022,
+      0.03199,
+      0.01662,
+      0.01394,
+      0.01182,
+      0.01549,
+      0.01087,
+      0.02292,
+      0.01398,
+      0.03601,
+      0.09287,
+      0.02157,
+      0.03216,
+      0.02211,
+      0.02263,
+      0.0139,
+      0.02227,
+      0.04355,
+      0.03506,
+      0.02213,
+      0.01841,
+      0.02088,
+      0.03214,
+      0.01313,
+      0.0264,
+      0.02848,
+      0.0364,
+      0.04896,
+      0.02866,
+      0.01729,
+      0.01866,
+      0.026,
+      0.0195,
+      0.02125,
+      0.02991,
+      0.01854,
+      0.02168,
+      0.05618,
+      0.02344,
+      0.04729,
+      0.02641,
+      0.02479,
+      0.04132,
+      0.03469,
+      0.02068,
+      0.02129,
+      0.01901,
+      0.02301,
+      0.02682,
+      0.0387,
+      0.01634,
+      0.0302,
+      0.04032,
+      0.01794,
+      0.02942,
+      0.02434,
+      0.04694,
+      0.04611,
+      0.03239,
+      0.0386,
+      0.01827,
+      0.0211,
+      0.03002,
+      0.02291,
+      0.02684,
+      0.02186,
+      0.02311,
+      0.02028,
+      0.02387,
+      0.02456,
+      0.02696,
+      0.01781,
+      0.03078,
+      0.02205,
+      0.03608,
+      0.01153,
+      0.03147,
+      0.023,
+      0.01163,
+      0.01851,
+      0.02094,
+      0.02672,
+      0.03188,
+      0.05145,
+      0.01975,
+      0.02675,
+      0.05636,
+      0.02542,
+      0.03188,
+      0.01783,
+      0.01238,
+      0.02295,
+      0.01677,
+      0.02022,
+      0.02374,
+      0.04498,
+      0.03163,
+      0.06126,
+      0.07079,
+      0.05025,
+      0.01431,
+      0.02591,
+      0.02975,
+      0.02095,
+      0.03526,
+      0.02417,
+      0.0269,
+      0.03569,
+      0.0295,
+      0.0194,
+      0.0247,
+      0.02631,
+      0.03026,
+      0.02495,
+      0.02662,
+      0.03209,
+      0.02755,
+      0.03045,
+      0.05356,
+      0.04282,
+      0.02717,
+      0.02838,
+      0.02335
+    ],
+    "volume_clean": [
+      83890.0,
+      373432.0,
+      145559.0,
+      95328.0,
+      38335.0,
+      170841.0,
+      182252.0,
+      240253.0,
+      143296.0,
+      126615.0,
+      170839.0,
+      107363.0,
+      237886.0,
+      100260.0,
+      216661.0,
+      83076.0,
+      152911.0,
+      265349.0,
+      212384.0,
+      245801.0,
+      437683.0,
+      425860.0,
+      486870.0,
+      389004.0,
+      498620.0,
+      434395.0,
+      255057.0,
+      182467.0,
+      148212.0,
+      327385.0,
+      343495.0,
+      515095.0,
+      303971.0,
+      256144.0,
+      180038.0,
+      233819.0,
+      195707.0,
+      381268.0,
+      258261.0,
+      610957.0,
+      1561570.0,
+      410723.0,
+      535581.0,
+      399076.0,
+      385164.0,
+      285687.0,
+      447597.0,
+      780784.0,
+      623779.0,
+      354397.0,
+      314725.0,
+      422595.0,
+      604577.0,
+      278080.0,
+      528212.0,
+      500946.0,
+      606747.0,
+      932544.0,
+      554585.0,
+      282335.0,
+      387889.0,
+      515429.0,
+      355503.0,
+      257698.0,
+      487413.0,
+      340658.0,
+      448871.0,
+      1051819.0,
+      550836.0,
+      919850.0,
+      462385.0,
+      577549.0,
+      864439.0,
+      709824.0,
+      418603.0,
+      521823.0,
+      497561.0,
+      494328.0,
+      538983.0,
+      785765.0,
+      390989.0,
+      622012.0,
+      855176.0,
+      309489.0,
+      638766.0,
+      547500.0,
+      1067972.0,
+      787397.0,
+      645450.0,
+      812112.0,
+      448513.0,
+      454325.0,
+      525480.0,
+      340128.0,
+      604831.0,
+      494220.0,
+      556550.0,
+      437390.0,
+      497247.0,
+      566833.0,
+      622951.0,
+      443576.0,
+      562930.0,
+      481136.0,
+      818104.0,
+      371854.0,
+      660555.0,
+      620670.0,
+      377730.0,
+      402334.0,
+      521010.0,
+      592697.0,
+      783746.0,
+      1064843.0,
+      451761.0,
+      675365.0,
+      1296417.0,
+      417180.0,
+      744549.0,
+      546283.0,
+      354665.0,
+      676264.0,
+      497027.0,
+      534872.0,
+      636417.0,
+      807079.0,
+      629502.0,
+      529131.0,
+      747084.0,
+      404021.0,
+      431407.0,
+      718205.0,
+      673097.0,
+      529772.0,
+      599855.0,
+      465468.0,
+      466660.0,
+      664886.0,
+      605359.0,
+      404604.0,
+      492410.0,
+      543286.0,
+      584071.0,
+      564669.0,
+      620008.0,
+      551740.0,
+      620759.0,
+      612871.0,
+      1055797.0,
+      872210.0,
+      470230.0,
+      609109.0,
+      534052.0
+    ],
+    "volume_suspicious": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      434.0,
+      1069.0,
+      803.0,
+      2070.0,
+      2261.0,
+      3404.0,
+      3663.0,
+      3751.0,
+      3756.0,
+      4371.0,
+      3322.0,
+      4013.0,
+      4280.0,
+      3752.0,
+      3790.0,
+      4061.0,
+      4125.0,
+      3386.0,
+      4543.0,
+      3753.0,
+      4613.0,
+      4012.0,
+      3671.0,
+      4148.0,
+      4075.0,
+      3959.0,
+      3876.0,
+      3310.0,
+      4011.0,
+      232328.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1526394.0,
+      1469053.0,
+      1484703.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "volume_bots": [
+      69364.0,
+      302147.0,
+      221672.0,
+      70646.0,
+      89365.0,
+      161841.0,
+      196355.0,
+      241895.0,
+      209455.0,
+      328220.0,
+      326566.0,
+      223765.0,
+      182792.0,
+      380683.0,
+      107484.0,
+      209782.0,
+      216086.0,
+      395091.0,
+      131224.0,
+      194970.0,
+      392775.0,
+      372527.0,
+      584408.0,
+      371594.0,
+      525926.0,
+      379843.0,
+      87654.0,
+      118361.0,
+      66697.0,
+      411817.0,
+      269670.0,
+      468146.0,
+      206120.0,
+      172017.0,
+      188528.0,
+      241433.0,
+      138530.0,
+      320389.0,
+      176995.0,
+      506414.0,
+      1330177.0,
+      257604.0,
+      478103.0,
+      294667.0,
+      329975.0,
+      161130.0,
+      270613.0,
+      637285.0,
+      524187.0,
+      360947.0,
+      271344.0,
+      243714.0,
+      431641.0,
+      144002.0,
+      326297.0,
+      426029.0,
+      597208.0,
+      683400.0,
+      397632.0,
+      292760.0,
+      241873.0,
+      366491.0,
+      303893.0,
+      455405.0,
+      509199.0,
+      273611.0,
+      264293.0,
+      811147.0,
+      237232.0,
+      683885.0,
+      451977.0,
+      295358.0,
+      597551.0,
+      508219.0,
+      320891.0,
+      249305.0,
+      186801.0,
+      329994.0,
+      418471.0,
+      578225.0,
+      193201.0,
+      448661.0,
+      599313.0,
+      333096.0,
+      407105.0,
+      320372.0,
+      605724.0,
+      852833.0,
+      495136.0,
+      570440.0,
+      206384.0,
+      300609.0,
+      335254.0,
+      497959.0,
+      391880.0,
+      320323.0,
+      293000.0,
+      319153.0,
+      401635.0,
+      384090.0,
+      418340.0,
+      236525.0,
+      625824.0,
+      394018.0,
+      597114.0,
+      83823.0,
+      598232.0,
+      282276.0,
+      80395.0,
+      334297.0,
+      310701.0,
+      467187.0,
+      469083.0,
+      957647.0,
+      323143.0,
+      369339.0,
+      915325.0,
+      589212.0,
+      545471.0,
+      184882.0,
+      153450.0,
+      260797.0,
+      191740.0,
+      293966.0,
+      340584.0,
+      1027938.0,
+      623325.0,
+      407616.0,
+      596511.0,
+      132593.0,
+      147080.0,
+      332776.0,
+      543109.0,
+      321804.0,
+      399850.0,
+      215954.0,
+      290712.0,
+      355381.0,
+      248607.0,
+      162842.0,
+      233780.0,
+      247010.0,
+      325611.0,
+      192857.0,
+      192964.0,
+      434965.0,
+      226109.0,
+      334514.0,
+      632786.0,
+      480930.0,
+      396447.0,
+      311163.0,
+      225950.0
+    ],
+    "dau_reported": [
+      43,
+      57,
+      52,
+      57,
+      58,
+      70,
+      104,
+      81,
+      101,
+      80,
+      104,
+      81,
+      106,
+      102,
+      118,
+      113,
+      124,
+      132,
+      117,
+      144,
+      133,
+      138,
+      141,
+      152,
+      151,
+      163,
+      137,
+      158,
+      141,
+      147,
+      185,
+      186,
+      173,
+      196,
+      192,
+      173,
+      181,
+      199,
+      161,
+      204,
+      218,
+      196,
+      203,
+      243,
+      229,
+      234,
+      230,
+      238,
+      229,
+      236,
+      251,
+      254,
+      246,
+      247,
+      252,
+      254,
+      210,
+      261,
+      261,
+      266,
+      253,
+      295,
+      322,
+      334,
+      388,
+      364,
+      417,
+      440,
+      502,
+      488,
+      489,
+      529,
+      523,
+      564,
+      515,
+      544,
+      578,
+      526,
+      579,
+      582,
+      554,
+      601,
+      610,
+      595,
+      566,
+      558,
+      572,
+      602,
+      616,
+      616,
+      584,
+      604,
+      1260,
+      420,
+      518,
+      552,
+      588,
+      574,
+      606,
+      642,
+      621,
+      646,
+      640,
+      600,
+      582,
+      525,
+      520,
+      524,
+      453,
+      437,
+      455,
+      456,
+      459,
+      447,
+      476,
+      457,
+      489,
+      475,
+      494,
+      478,
+      497,
+      509,
+      498,
+      485,
+      470,
+      484,
+      457,
+      478,
+      492,
+      475,
+      455,
+      505,
+      451,
+      460,
+      468,
+      483,
+      497,
+      505,
+      513,
+      500,
+      499,
+      500,
+      514,
+      572,
+      516,
+      536,
+      536,
+      565,
+      518,
+      537,
+      554,
+      549,
+      504
+    ],
+    "dau_clean": [
+      43,
+      57,
+      52,
+      57,
+      58,
+      70,
+      104,
+      81,
+      101,
+      80,
+      104,
+      81,
+      106,
+      102,
+      118,
+      113,
+      124,
+      132,
+      117,
+      144,
+      133,
+      138,
+      141,
+      152,
+      151,
+      163,
+      137,
+      158,
+      141,
+      147,
+      185,
+      186,
+      173,
+      196,
+      192,
+      173,
+      181,
+      199,
+      161,
+      204,
+      218,
+      196,
+      203,
+      243,
+      229,
+      234,
+      230,
+      238,
+      229,
+      236,
+      251,
+      254,
+      246,
+      247,
+      252,
+      254,
+      210,
+      261,
+      261,
+      266,
+      253,
+      295,
+      322,
+      320,
+      349,
+      334,
+      342,
+      359,
+      374,
+      356,
+      352,
+      394,
+      365,
+      440,
+      370,
+      392,
+      436,
+      384,
+      434,
+      430,
+      431,
+      442,
+      470,
+      426,
+      416,
+      424,
+      418,
+      456,
+      470,
+      470,
+      459,
+      456,
+      461,
+      420,
+      518,
+      552,
+      588,
+      574,
+      606,
+      642,
+      621,
+      646,
+      640,
+      600,
+      582,
+      525,
+      520,
+      524,
+      453,
+      437,
+      455,
+      456,
+      459,
+      447,
+      476,
+      457,
+      489,
+      475,
+      494,
+      478,
+      497,
+      509,
+      498,
+      485,
+      470,
+      484,
+      457,
+      476,
+      490,
+      473,
+      455,
+      505,
+      451,
+      460,
+      468,
+      483,
+      497,
+      505,
+      513,
+      500,
+      499,
+      500,
+      514,
+      572,
+      516,
+      536,
+      536,
+      565,
+      518,
+      537,
+      554,
+      549,
+      504
+    ]
+  },
+  "validation": {
+    "sybil": {
+      "tp": 799,
+      "fp": 0,
+      "fn": 8,
+      "precision": 1.0,
+      "recall": 0.990086741016109
+    },
+    "wash": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "anomalies": [
+      {
+        "date": "2026-08-01",
+        "type": "airdrop_claim_and_dump",
+        "detected": true
+      },
+      {
+        "date": "2026-09-01",
+        "type": "team_token_unlock",
+        "detected": true
+      },
+      {
+        "date": "2026-09-05",
+        "type": "wash_trading_volume_spike",
+        "detected": true
+      },
+      {
+        "date": "2026-09-06",
+        "type": "wash_trading_volume_spike",
+        "detected": true
+      },
+      {
+        "date": "2026-09-07",
+        "type": "wash_trading_volume_spike",
+        "detected": false
+      },
+      {
+        "date": "2026-09-12",
+        "type": "whale_lp_exit_tvl_drop",
+        "detected": true
+      }
+    ],
+    "experiment_truth": {
+      "window": [
+        "2026-08-01",
+        "2026-08-31"
+      ],
+      "metric": "quote_to_submit",
+      "control": 0.36,
+      "treatment": 0.42
+    }
+  },
+  "insights": [
+    {
+      "priority": "P0",
+      "area": "产品 / 实验",
+      "finding": "新版 Swap 界面(B)将「报价→提交」转化率从 51.3% 提升到 56.5%(相对 +10.3%,p=3e-11,95% CI [+3.7%, +6.8%])",
+      "evidence": "用户级分析,A=7,932 / B=7,900 名报价用户;SRM 检验 p=0.75(分流正常);MDE=2.2%",
+      "hypothesis": "路由预览降低了用户对滑点/价格的不确定性,从而减少报价后的放弃。",
+      "action": "全量上线 B;下一步实验:在报价页展示 gas 预估 + 失败重试引导(提交→确认环节)。",
+      "impact": "预计每月 +2,000 笔成功交易,约 +$2.62M 交易量 / +$7,848 LP 手续费。"
+    },
+    {
+      "priority": "P0",
+      "area": "增长 / 代币经济",
+      "finding": "7 月(Quest 活动期)新增钱包中 13% 是女巫;女巫拿走了 25% 的空投,24 小时内抛售 100%(真实用户 7 天仅卖出 32%)",
+      "evidence": "8 个资金簇共 799 个钱包:同一地址在 <2h 内注资、从未使用前端、单笔 ~$30、活跃 <1 个月;空投后一周 DEMO 价格 -22%。",
+      "hypothesis": "积分规则只按交易笔数计分,脚本批量刷量的边际成本几乎为零。",
+      "action": "空投前跑资金簇 + 行为规则过滤;积分按手续费/持有时长加权并设上限;空投改为线性解锁(如 30 天),或与后续活跃挂钩。",
+      "impact": "若剔除女巫,可把 ~6.5M DEMO(按发放时价格约 $245k)留给真实用户,并降低上线首周抛压。"
+    },
+    {
+      "priority": "P1",
+      "area": "增长 / 投放",
+      "finding": "Twitter Ads 的 CAC $56 而 30 日 LTV(手续费)仅 $5.50;Quest 平台 D30 留存 50%,明显低于自然流量的 86%",
+      "evidence": "渠道归因 = 钱包首次连接时所属会话的 UTM 渠道;LTV = 首笔交易后 30 天内产生的 LP 手续费。",
+      "hypothesis": "付费渠道带来的是一次性的「任务型」用户;自然流量与 KOL 用户本身有交易需求。",
+      "action": "把 Twitter 预算的一部分转给 KOL 推荐(按留存后付费 / CPA 计价);Quest 任务改成「连续 4 周每周交易」这类留存型任务。",
+      "impact": "以 LTV/CAC 衡量,当前所有付费渠道都 < 1:应把 30 日 LTV 换成 90 日 + 协议收入口径后重新评估,再决定是否继续投放。"
+    },
+    {
+      "priority": "P1",
+      "area": "DeFi / 流动性",
+      "finding": "WETH-USDC 池的被动 LP 在观察期内跑输持币:手续费收益 1.17%,无常损失 -3.52%,净收益 -2.35%",
+      "evidence": "池子日均成交/TVL 仅 2.52%;要覆盖无常损失,日均成交需要 ~$1.7M,实际只有 $0.57M。",
+      "hypothesis": "流动性相对交易需求过剩(资本效率低),LP 收益不足,资金存在持续流出的风险。",
+      "action": "评估集中流动性(V3 式区间)或动态费率;DEMO 激励应从「补贴 TVL」改为「补贴真实成交量」(如交易挖矿 + 反刷量过滤)。",
+      "impact": "资本效率提高后,同样的 TVL 可以给出更好的报价深度,LP APR 也会上升。"
+    },
+    {
+      "priority": "P1",
+      "area": "风险 / 流动性集中度",
+      "finding": "2026-09-12 单日 TVL -30%:单一做市商一次撤出了一半的 WETH-USDC 流动性",
+      "evidence": "该地址提供了 WETH-USDC 累计存入流动性的 53%;异常检测(稳健 z 分数)在当日报警。",
+      "hypothesis": "TVL 高度依赖单一做市商,对方策略一变,滑点和用户体验就会立刻恶化。",
+      "action": "设置「单一 LP 占比 > 30%」监控与告警;与做市商签锁定期 / 分批撤出协议;用激励吸引更分散的长尾 LP。",
+      "impact": "降低尾部风险:撤出发生在交易高峰时,大额交易的滑点会显著扩大。"
+    },
+    {
+      "priority": "P2",
+      "area": "数据质量 / 指标口径",
+      "finding": "约 $4.5M 交易量(9 月初 3 天)来自同一资金源的 2 个钱包在 DEMO 池里对倒刷量",
+      "evidence": "两个钱包净头寸 / 总成交 < 1%,每天 150 笔往返交易,同一地址注资。",
+      "hypothesis": "可能是为了刷 DEMO 的成交量排名,或做 CEX 上币前的数据包装。",
+      "action": "对外报告与内部 KPI 统一采用「清洗后」口径(剔除机器人、女巫和刷量);在交易排行榜 / 激励计算中接入刷量过滤。",
+      "impact": "报告口径的峰值 DAU 为 1,260(2026-08-01),同日清洗后只有 461:口径差异会直接误导决策。"
+    },
+    {
+      "priority": "P2",
+      "area": "留存",
+      "finding": "27% 的真实用户只在一天内交易过;首周后留存 33%,第 8 周 11%",
+      "evidence": "周同期群(按首笔交易周),已剔除机器人 / 女巫 / 刷量钱包。",
+      "hypothesis": "首单之后缺少触发回访的理由(没有限价单、没有持仓 / 收益看板)。",
+      "action": "上线限价单 / DCA 和「我的持仓」页;对首单后 7 天没回来的钱包做定向推送(如 Push Protocol、邮件订阅)。",
+      "impact": "第 1 周留存每提高 5 个百分点,按当前新增速度,每月多出数百个活跃交易者。"
+    }
+  ]
+}

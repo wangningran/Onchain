@@ -1,0 +1,22 @@
+version: 2
+models:
+  - name: int_swaps_decoded
+    description: Decoded V2 Swap events, one row per swap log, valued in USD.
+    tests:
+      - dbt_utils_unique_combination: {arguments: {columns: [tx_hash, log_index]}}
+    columns:
+      - name: trader
+        tests: [not_null]
+      - name: amount_usd
+        tests: [not_null]
+      - name: token_sold_symbol
+        tests:
+          - accepted_values: {arguments: {values: [WETH, USDC, USDT, DEMO]}}
+  - name: int_pool_reserves_daily
+    columns:
+      - name: tvl_usd
+        tests: [not_null]
+  - name: int_session_funnel
+    columns:
+      - name: session_id
+        tests: [unique, not_null]
