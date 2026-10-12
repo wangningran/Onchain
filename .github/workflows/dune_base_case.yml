@@ -1,0 +1,44 @@
+name: dune base case study
+
+# Runs the real-data case study (Base DEX retention) on Dune and commits the CSV results.
+# Needs repository secret DUNE_API_KEY (Settings -> Secrets and variables -> Actions).
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: "dex.trades project on Base (e.g. uniswap, aerodrome)"
+        default: "uniswap"
+        required: true
+      only:
+        description: "optional: space-separated query stems to run (blank = all)"
+        default: ""
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Run Dune queries
+        env:
+          DUNE_API_KEY: ${{ secrets.DUNE_API_KEY }}
+        run: |
+          python scripts/run_dune_case.py --project "${{ inputs.project }}" ${{ inputs.only && format('--only {0}', inputs.only) || '' }}
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/real
+          git diff --cached --quiet && { echo "no new results"; exit 0; }
+          git commit -m "Dune results: Base ${{ inputs.project }} case study"
+          git pull --rebase origin main
+          git push origin HEAD:main
