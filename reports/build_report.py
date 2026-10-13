@@ -26,47 +26,53 @@ def delta(v):
 
 def render_markdown(R: dict) -> str:
     K, dq, ex = R["kpis"], R["data_quality"], R["experiment"]
-    L = [f"# DemoSwap 协议日报 · {R['as_of']}", "",
-         f"> 观察窗口 {R['window'][0]} → {R['window'][1]};KPI 为近 30 天 vs 前 30 天。「清洗后」= 剔除 MEV 机器人 / 协议地址 / 女巫簇 / 刷量钱包。", "",
-         "## 核心指标", "", "| 指标 | 数值 | 环比 |", "|---|---:|---:|",
+    L = [f"# DemoSwap daily protocol report · {R['as_of']}", "",
+         f"> Window {R['window'][0]} → {R['window'][1]}; KPIs compare the last 30 days with the previous 30. "
+         "\"Clean\" = excluding MEV bots, protocol addresses, sybil clusters and wash-trading wallets. "
+         "Data is simulated (see README).", "",
+         "## Key metrics", "", "| Metric | Value | vs previous 30d |", "|---|---:|---:|",
          f"| TVL | {usd(K['tvl_usd']['value'])} | {delta(K['tvl_usd']['change'])} |",
-         f"| 30 日交易量(全部) | {usd(K['volume_usd']['value'])} | {delta(K['volume_usd']['change'])} |",
-         f"| 30 日交易量(清洗后) | {usd(K['clean_volume_usd']['value'])} | {delta(K['clean_volume_usd']['change'])} |",
-         f"| 30 日 LP 手续费 | {usd(K['fees_usd']['value'])} | {delta(K['fees_usd']['change'])} |",
-         f"| 日均活跃交易者(报告口径 / 清洗后) | {K['avg_reported_dau']['value']:,.0f} / {K['avg_clean_dau']['value']:,.0f} | {delta(K['avg_clean_dau']['change'])} |",
-         f"| 30 日新增真实用户 | {K['clean_new_traders']['value']:,.0f} | {delta(K['clean_new_traders']['change'])} |",
-         f"| Fee APR(近 30 日年化) | {pct(K['fee_apr_30d']['value'], 2)} | |", "",
-         "## 关键发现与建议", ""]
+         f"| 30d volume (all) | {usd(K['volume_usd']['value'])} | {delta(K['volume_usd']['change'])} |",
+         f"| 30d volume (clean) | {usd(K['clean_volume_usd']['value'])} | {delta(K['clean_volume_usd']['change'])} |",
+         f"| 30d LP fees | {usd(K['fees_usd']['value'])} | {delta(K['fees_usd']['change'])} |",
+         f"| Avg daily active traders (reported / clean) | {K['avg_reported_dau']['value']:,.0f} / {K['avg_clean_dau']['value']:,.0f} | {delta(K['avg_clean_dau']['change'])} |",
+         f"| 30d new real users | {K['clean_new_traders']['value']:,.0f} | {delta(K['clean_new_traders']['change'])} |",
+         f"| Fee APR (30d annualised) | {pct(K['fee_apr_30d']['value'], 2)} | |", "",
+         "## Findings and recommendations", ""]
     for i, s in enumerate(R["insights"], 1):
         L += [f"### {i}. [{s['priority']}] {s['finding']}", "",
-              f"- **领域**:{s['area']}", f"- **证据**:{s['evidence']}", f"- **假设**:{s['hypothesis']}",
-              f"- **建议**:{s['action']}", f"- **预期影响**:{s['impact']}", ""]
-    L += ["## 异常报警", "", "| 日期 | 指标 | z | 方向 |", "|---|---|---:|---|"]
+              f"- **Area:** {s['area']}", f"- **Evidence:** {s['evidence']}", f"- **Hypothesis:** {s['hypothesis']}",
+              f"- **Recommendation:** {s['action']}", f"- **Expected impact:** {s['impact']}", ""]
+    L += ["## Anomaly alerts", "", "| Date | Metric | z | Direction |", "|---|---|---:|---|"]
     for a in R["anomalies"]["flagged"]:
-        L.append(f"| {a['day']} | {a['metric']} | {a['zscore']:.1f} | {'激增' if a['direction']=='spike' else '骤降'} |")
-    L += ["", "**交易量异常归因**(当日 Top3 地址):", ""]
+        L.append(f"| {a['day']} | {a['metric']} | {a['zscore']:.1f} | {'spike' if a['direction']=='spike' else 'drop'} |")
+    L += ["", "**Volume anomaly attribution** (top 3 addresses that day):", ""]
     for a in R["anomalies"]["volume_attribution"]:
-        L.append(f"- {a['day']}:Top3 贡献 {pct(a['top_share'],0)},类型 {' / '.join(a['top_flags'])},主要在 {a['top_pool']}")
+        L.append(f"- {a['day']}: top 3 contributed {pct(a['top_share'],0)}, types {' / '.join(a['top_flags'])}, mainly in {a['top_pool']}")
     if R["anomalies"]["large_token_transfers"]:
-        L += ["", "**大额代币转移**(≥ 0.5% 供应,不含铸造与 CEX / 机器人库存):", ""]
+        L += ["", "**Large token transfers** (≥ 0.5% of supply, excluding mints and CEX / bot inventory):", ""]
         for t in R["anomalies"]["large_token_transfers"]:
-            L.append(f"- {t['block_time'][:16]}  {t['from_label'] or t['from_address'][:10]} → {t['to_label'] or t['to_address'][:10]}:{t['amount']/1e6:,.1f}M DEMO({pct(t['share_of_supply'],2)})")
-    L += ["", "## 实验", "",
-          f"- 用户级:A {pct(ex['user_level']['rate_a'])} vs B {pct(ex['user_level']['rate_b'])},p={ex['user_level']['p_value']:.1g},"
+            L.append(f"- {t['block_time'][:16]}  {t['from_label'] or t['from_address'][:10]} → {t['to_label'] or t['to_address'][:10]}: "
+                     f"{t['amount']/1e6:,.1f}M DEMO ({pct(t['share_of_supply'],2)})")
+    L += ["", "## Experiment", "",
+          f"- User level: A {pct(ex['user_level']['rate_a'])} vs B {pct(ex['user_level']['rate_b'])}, p={ex['user_level']['p_value']:.1g}, "
           f"95% CI [{pct(ex['user_level']['ci_low'])}, {pct(ex['user_level']['ci_high'])}]",
-          f"- 会话级(仅供参考,同一用户的会话彼此相关,会低估方差):A {pct(ex['session_level']['rate_a'])} vs B {pct(ex['session_level']['rate_b'])}",
-          f"- SRM 检验 p={ex['srm']['p_value']:.2f} → {'⚠ 分流异常' if ex['srm']['srm_detected'] else '分流正常'};当前样本 MDE = {pct(ex['mde_abs'])}", "",
-          "## 数据质量", "",
-          f"- 识别出 {dq['sybil_clusters']} 个女巫资金簇({dq['sybil_wallets']} 个钱包)和 {dq['wash_wallets']} 个刷量钱包(刷量额 {usd(dq['wash_volume_usd'])})",
-          f"- 机器人交易量占比 {pct(dq['bot_volume_share'])};报告口径用户 {dq['reported_users']:,} → 清洗后 {dq['clean_users']:,}"]
+          f"- Session level (reference only; sessions of the same user are correlated, so variance is understated): "
+          f"A {pct(ex['session_level']['rate_a'])} vs B {pct(ex['session_level']['rate_b'])}",
+          f"- SRM check p={ex['srm']['p_value']:.2f} → {'⚠ assignment problem' if ex['srm']['srm_detected'] else 'assignment healthy'}; "
+          f"MDE at current sample = {pct(ex['mde_abs'])}", "",
+          "## Data quality", "",
+          f"- Found {dq['sybil_clusters']} sybil funding clusters ({dq['sybil_wallets']} wallets) and {dq['wash_wallets']} wash-trading wallets "
+          f"({usd(dq['wash_volume_usd'])} wash volume)",
+          f"- Bot share of volume {pct(dq['bot_volume_share'])}; reported users {dq['reported_users']:,} → clean {dq['clean_users']:,}"]
     if "validation" in R:
         V = R["validation"]
-        L += ["", "## 模型验证(模拟数据的隐藏真值)", "",
-              f"- 女巫检测 precision {pct(V['sybil']['precision'])} / recall {pct(V['sybil']['recall'])}",
-              f"- 刷量检测 precision {pct(V['wash']['precision'])} / recall {pct(V['wash']['recall'])}",
-              f"- 实验:真实单次报价提交率 {pct(V['experiment_truth']['control'])} → {pct(V['experiment_truth']['treatment'])};"
-              f"会话级估计提升 {pct(ex['session_level']['abs_lift'])}(CI [{pct(ex['session_level']['ci_low'])}, {pct(ex['session_level']['ci_high'])}])",
-              "- 异常检出:" + ",".join(f"{a['date']} {a['type']} {'✓' if a['detected'] else '✗'}" for a in V["anomalies"])]
+        L += ["", "## Model validation (against the simulator's hidden ground truth)", "",
+              f"- Sybil detection precision {pct(V['sybil']['precision'])} / recall {pct(V['sybil']['recall'])}",
+              f"- Wash-trading detection precision {pct(V['wash']['precision'])} / recall {pct(V['wash']['recall'])}",
+              f"- Experiment: true per-quote submit rate {pct(V['experiment_truth']['control'])} → {pct(V['experiment_truth']['treatment'])}; "
+              f"estimated session-level lift {pct(ex['session_level']['abs_lift'])} (CI [{pct(ex['session_level']['ci_low'])}, {pct(ex['session_level']['ci_high'])}])",
+              "- Anomalies detected: " + ", ".join(f"{a['date']} {a['type']} {'✓' if a['detected'] else '✗'}" for a in V["anomalies"])]
     return "\n".join(L) + "\n"
 
 

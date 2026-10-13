@@ -1,6 +1,6 @@
 ---
 name: onchain-analyst
-description: Research crypto on-chain activity like a Web3 data analyst. Use for any question about blockchain transactions, wallets, tokens, smart contracts, DEX/DeFi protocol metrics (TVL, volume, liquidity, fees, APR/yield, impermanent loss), user behaviour (DAU, retention, churn, cohorts, funnels, acquisition, A/B tests), tokenomics (holder concentration, unlocks, airdrop sell pressure), sybil/wash-trading/MEV-bot detection, or writing DuneSQL / Flipside / BigQuery queries and decoding event logs. Also triggers on 链上分析, 链上数据, 钱包地址, 代币, 智能合约, TVL, 交易量, 留存, 同期群, 漏斗, 女巫, 刷量, 空投, Dune. Produces validated numbers plus findings, hypotheses and recommendations for product and business teams.
+description: Research crypto on-chain activity like a Web3 data analyst. Use for any question about blockchain transactions, wallets, tokens, smart contracts, DEX/DeFi protocol metrics (TVL, volume, liquidity, fees, APR/yield, impermanent loss), user behaviour (DAU, retention, churn, cohorts, funnels, acquisition, A/B tests), tokenomics (holder concentration, unlocks, airdrop sell pressure), sybil/wash-trading/MEV-bot detection, or writing DuneSQL / Flipside / BigQuery queries and decoding event logs. Produces validated numbers plus findings, hypotheses and recommendations for product and business teams.
 ---
 
 # On-chain analyst

@@ -280,75 +280,79 @@ def build_insights(R: dict) -> list[dict]:
     out = []
     ul = ex["user_level"]
     out.append(dict(
-        priority="P0", area="产品 / 实验",
-        finding=f"新版 Swap 界面(B)将「报价→提交」转化率从 {ul['rate_a']:.1%} 提升到 {ul['rate_b']:.1%}"
-                f"(相对 +{ul['rel_lift']:.1%},p={ul['p_value']:.1g},95% CI [{ul['ci_low']:+.1%}, {ul['ci_high']:+.1%}])",
-        evidence=f"用户级分析,A={ul['n_a']:,} / B={ul['n_b']:,} 名报价用户;SRM 检验 p={ex['srm']['p_value']:.2f}(分流正常);"
-                 f"MDE={ex['mde_abs']:.1%}",
-        hypothesis="路由预览降低了用户对滑点/价格的不确定性,从而减少报价后的放弃。",
-        action="全量上线 B;下一步实验:在报价页展示 gas 预估 + 失败重试引导(提交→确认环节)。",
-        impact=f"预计每月 +{ex['projected_extra_swaps_per_month']:,.0f} 笔成功交易,"
-               f"约 +${ex['projected_extra_volume_per_month']/1e6:,.2f}M 交易量 / +${ex['projected_extra_lp_fees_per_month']:,.0f} LP 手续费。",
+        priority="P0", area="Product / Experiment",
+        finding=f"The new swap UI (B) lifts quote→submit conversion from {ul['rate_a']:.1%} to {ul['rate_b']:.1%} "
+                f"(+{ul['rel_lift']:.1%} relative, p={ul['p_value']:.1g}, 95% CI [{ul['ci_low']:+.1%}, {ul['ci_high']:+.1%}])",
+        evidence=f"User-level analysis, A={ul['n_a']:,} / B={ul['n_b']:,} quoting users; SRM check p={ex['srm']['p_value']:.2f} (assignment healthy); "
+                 f"MDE={ex['mde_abs']:.1%}.",
+        hypothesis="The route preview reduces uncertainty about slippage and price, so fewer users abandon after quoting.",
+        action="Ship B to 100%. Next experiment: show a gas estimate and a retry flow for failed transactions (the submit→confirm step).",
+        impact=f"About +{ex['projected_extra_swaps_per_month']:,.0f} successful swaps per month, "
+               f"≈ +${ex['projected_extra_volume_per_month']/1e6:,.2f}M volume / +${ex['projected_extra_lp_fees_per_month']:,.0f} LP fees.",
     ))
     sy = next((a for a in tk["airdrop"] if a["recipient_type"] == "sybil"), None)
     ge = next((a for a in tk["airdrop"] if a["recipient_type"] == "genuine"), None)
     if sy and ge:
         out.append(dict(
-            priority="P0", area="增长 / 代币经济",
-            finding=f"7 月(Quest 活动期)新增钱包中 {dq['july_new_sybil_share']:.0%} 是女巫;女巫拿走了 {sy['share_of_airdrop']:.0%} 的空投,"
-                    f"24 小时内抛售 {sy['sell_through_24h']:.0%}(真实用户 7 天仅卖出 {ge['sell_through_7d']:.0%})",
-            evidence=f"{dq['sybil_clusters']} 个资金簇共 {dq['sybil_wallets']} 个钱包:同一地址在 <2h 内注资、从未使用前端、"
-                     f"单笔 ~$30、活跃 <1 个月;空投后一周 DEMO 价格 {tk['demo_price_change_airdrop_week']:+.0%}。",
-            hypothesis="积分规则只按交易笔数计分,脚本批量刷量的边际成本几乎为零。",
-            action="空投前跑资金簇 + 行为规则过滤;积分按手续费/持有时长加权并设上限;空投改为线性解锁(如 30 天),或与后续活跃挂钩。",
-            impact=f"若剔除女巫,可把 ~{sy['claimed_tokens']/1e6:,.1f}M DEMO(按发放时价格约 ${sy['claimed_usd_at_t0']/1e3:,.0f}k)留给真实用户,并降低上线首周抛压。",
+            priority="P0", area="Growth / Tokenomics",
+            finding=f"{dq['july_new_sybil_share']:.0%} of wallets acquired in July (quest campaign) are sybils; they took {sy['share_of_airdrop']:.0%} of the airdrop "
+                    f"and sold {sy['sell_through_24h']:.0%} of it within 24h (genuine users sold only {ge['sell_through_7d']:.0%} within 7 days)",
+            evidence=f"{dq['sybil_clusters']} funding clusters with {dq['sybil_wallets']} wallets: seeded by one address within <2h, never used the front-end, "
+                     f"~$30 per swap, active <1 month. DEMO price moved {tk['demo_price_change_airdrop_week']:+.0%} in the week after the airdrop.",
+            hypothesis="Points were awarded per transaction count, so scripted farming cost almost nothing.",
+            action="Run funding-cluster and behaviour filters before the airdrop; weight points by fees paid and holding time, with a cap; "
+                   "switch to linear vesting (e.g. 30 days) or tie unlocks to continued activity.",
+            impact=f"Filtering sybils would redirect ~{sy['claimed_tokens']/1e6:,.1f}M DEMO (≈ ${sy['claimed_usd_at_t0']/1e3:,.0f}k at distribution) "
+                   f"to real users and reduce first-week sell pressure.",
         ))
     q, tw, org = ch.get("quest_platform", {}), ch.get("twitter_ads", {}), ch.get("organic", {})
     if q and tw:
         out.append(dict(
-            priority="P1", area="增长 / 投放",
-            finding=f"Twitter Ads 的 CAC ${tw['cac_usd']:.0f} 而 30 日 LTV(手续费)仅 ${tw['ltv_30d_fees_usd']:.2f};"
-                    f"Quest 平台 D30 留存 {q['d30_retention']:.0%},明显低于自然流量的 {org.get('d30_retention', float('nan')):.0%}",
-            evidence="渠道归因 = 钱包首次连接时所属会话的 UTM 渠道;LTV = 首笔交易后 30 天内产生的 LP 手续费。",
-            hypothesis="付费渠道带来的是一次性的「任务型」用户;自然流量与 KOL 用户本身有交易需求。",
-            action="把 Twitter 预算的一部分转给 KOL 推荐(按留存后付费 / CPA 计价);Quest 任务改成「连续 4 周每周交易」这类留存型任务。",
-            impact="以 LTV/CAC 衡量,当前所有付费渠道都 < 1:应把 30 日 LTV 换成 90 日 + 协议收入口径后重新评估,再决定是否继续投放。",
+            priority="P1", area="Growth / Paid acquisition",
+            finding=f"Twitter Ads CAC is ${tw['cac_usd']:.0f} while 30-day LTV (fees) is only ${tw['ltv_30d_fees_usd']:.2f}; "
+                    f"quest-platform D30 retention is {q['d30_retention']:.0%}, well below organic at {org.get('d30_retention', float('nan')):.0%}",
+            evidence="Channel attribution = UTM channel of the session in which the wallet first connected; LTV = LP fees generated in the 30 days after the first swap.",
+            hypothesis="Paid channels bring one-off, task-driven users; organic and KOL users arrive with real trading intent.",
+            action="Move part of the Twitter budget to KOL referrals paid on retention (CPA); redesign quests around retention, e.g. 'trade every week for 4 weeks'.",
+            impact="Every paid channel is below 1× LTV/CAC. Re-evaluate on 90-day LTV and protocol revenue before continuing spend.",
         ))
     weth = next(p for p in df_["pools"] if p["pool"] == "WETH-USDC")
     out.append(dict(
-        priority="P1", area="DeFi / 流动性",
-        finding=f"WETH-USDC 池的被动 LP 在观察期内跑输持币:手续费收益 {weth['fee_yield']:.2%},无常损失 {weth['impermanent_loss']:.2%},"
-                f"净收益 {weth['net_vs_hodl']:+.2%}",
-        evidence=f"池子日均成交/TVL 仅 {weth['volume_tvl_ratio']:.2%};要覆盖无常损失,日均成交需要 ~${weth['breakeven_daily_volume']/1e6:,.1f}M,"
-                 f"实际只有 ${weth['actual_avg_daily_volume']/1e6:,.2f}M。",
-        hypothesis="流动性相对交易需求过剩(资本效率低),LP 收益不足,资金存在持续流出的风险。",
-        action="评估集中流动性(V3 式区间)或动态费率;DEMO 激励应从「补贴 TVL」改为「补贴真实成交量」(如交易挖矿 + 反刷量过滤)。",
-        impact="资本效率提高后,同样的 TVL 可以给出更好的报价深度,LP APR 也会上升。",
+        priority="P1", area="DeFi / Liquidity",
+        finding=f"Passive LPs in WETH-USDC underperformed holding: fee yield {weth['fee_yield']:.2%}, impermanent loss {weth['impermanent_loss']:.2%}, "
+                f"net {weth['net_vs_hodl']:+.2%} vs HODL",
+        evidence=f"Daily volume/TVL is only {weth['volume_tvl_ratio']:.2%}. Covering IL would need ~${weth['breakeven_daily_volume']/1e6:,.1f}M average daily volume; "
+                 f"actual was ${weth['actual_avg_daily_volume']/1e6:,.2f}M.",
+        hypothesis="Liquidity is over-provisioned relative to trading demand (low capital efficiency), so LP returns are thin and capital is at risk of leaving.",
+        action="Evaluate concentrated liquidity (V3-style ranges) or dynamic fees; shift DEMO incentives from subsidising TVL to subsidising real volume "
+               "(trading rewards with wash-trading filters).",
+        impact="Better capital efficiency gives deeper quotes from the same TVL and raises LP APR.",
     ))
     out.append(dict(
-        priority="P1", area="风险 / 流动性集中度",
-        finding=f"{df_['biggest_tvl_drop_day']} 单日 TVL {df_['biggest_tvl_drop_pct']:.0%}:单一做市商一次撤出了一半的 WETH-USDC 流动性",
-        evidence=f"该地址提供了 WETH-USDC 累计存入流动性的 {df_['top_lp_share_of_deposits']:.0%};异常检测(稳健 z 分数)在当日报警。",
-        hypothesis="TVL 高度依赖单一做市商,对方策略一变,滑点和用户体验就会立刻恶化。",
-        action="设置「单一 LP 占比 > 30%」监控与告警;与做市商签锁定期 / 分批撤出协议;用激励吸引更分散的长尾 LP。",
-        impact="降低尾部风险:撤出发生在交易高峰时,大额交易的滑点会显著扩大。",
+        priority="P1", area="Risk / Liquidity concentration",
+        finding=f"TVL fell {df_['biggest_tvl_drop_pct']:.0%} on {df_['biggest_tvl_drop_day']}: a single market maker withdrew half of WETH-USDC liquidity at once",
+        evidence=f"That address supplied {df_['top_lp_share_of_deposits']:.0%} of all WETH-USDC deposits; the robust z-score detector fired the same day.",
+        hypothesis="TVL depends heavily on one market maker; if their strategy changes, slippage and user experience degrade immediately.",
+        action="Alert when any single LP exceeds 30% of a pool; agree lock-ups or staged withdrawals with market makers; use incentives to attract a broader LP base.",
+        impact="Reduces tail risk: a withdrawal during peak trading would sharply widen slippage on large trades.",
     ))
     out.append(dict(
-        priority="P2", area="数据质量 / 指标口径",
-        finding=f"约 ${dq['wash_volume_usd']/1e6:,.1f}M 交易量(9 月初 3 天)来自同一资金源的 {dq['wash_wallets']} 个钱包在 DEMO 池里对倒刷量",
-        evidence="两个钱包净头寸 / 总成交 < 1%,每天 150 笔往返交易,同一地址注资。",
-        hypothesis="可能是为了刷 DEMO 的成交量排名,或做 CEX 上币前的数据包装。",
-        action="对外报告与内部 KPI 统一采用「清洗后」口径(剔除机器人、女巫和刷量);在交易排行榜 / 激励计算中接入刷量过滤。",
-        impact=f"报告口径的峰值 DAU 为 {dq['peak_reported_dau']:,}({dq['peak_reported_dau_day']}),同日清洗后只有 {dq['peak_clean_dau_that_day']:,}:口径差异会直接误导决策。",
+        priority="P2", area="Data quality / Metric definitions",
+        finding=f"~${dq['wash_volume_usd']/1e6:,.1f}M of volume over 3 days in early September came from {dq['wash_wallets']} wallets with the same funder wash-trading the DEMO pool",
+        evidence="Both wallets net position / gross volume < 1%, 150 round trips per day, funded by the same address.",
+        hypothesis="Likely an attempt to inflate DEMO volume rankings, or to dress up metrics ahead of a CEX listing.",
+        action="Use 'clean' metrics (excluding bots, sybils and wash trading) for both external reporting and internal KPIs; apply wash filters to leaderboards and incentive calculations.",
+        impact=f"Reported peak DAU was {dq['peak_reported_dau']:,} ({dq['peak_reported_dau_day']}) versus {dq['peak_clean_dau_that_day']:,} clean users that day; the gap would mislead decisions.",
     ))
     ret = R["retention"]
     out.append(dict(
-        priority="P2", area="留存",
-        finding=f"{ret['one_and_done_share']:.0%} 的真实用户只在一天内交易过;首周后留存 {ret['curve'].get(1, float('nan')):.0%},第 8 周 {ret['curve'].get(8, float('nan')):.0%}",
-        evidence="周同期群(按首笔交易周),已剔除机器人 / 女巫 / 刷量钱包。",
-        hypothesis="首单之后缺少触发回访的理由(没有限价单、没有持仓 / 收益看板)。",
-        action="上线限价单 / DCA 和「我的持仓」页;对首单后 7 天没回来的钱包做定向推送(如 Push Protocol、邮件订阅)。",
-        impact="第 1 周留存每提高 5 个百分点,按当前新增速度,每月多出数百个活跃交易者。",
+        priority="P2", area="Retention",
+        finding=f"{ret['one_and_done_share']:.0%} of real users traded on a single day only; retention is {ret['curve'].get(1, float('nan')):.0%} after week 1 "
+                f"and {ret['curve'].get(8, float('nan')):.0%} by week 8",
+        evidence="Weekly cohorts by first-swap week, excluding bots, sybils and wash-trading wallets.",
+        hypothesis="After the first trade there is little reason to come back (no limit orders, no portfolio or P&L view).",
+        action="Launch limit orders / DCA and a 'My positions' page; re-engage wallets that haven't returned 7 days after their first swap (e.g. Push Protocol, email).",
+        impact="Each +5pp of week-1 retention adds several hundred monthly active traders at the current acquisition rate.",
     ))
     return out
 
